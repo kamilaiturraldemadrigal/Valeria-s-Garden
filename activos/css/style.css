@@ -1,0 +1,26 @@
+.Navbar {
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 16px 32px;
+    background-color: chartreuse;
+}
+
+.menu {
+    display: flex; 
+    gap: 12px;      
+    list-style: none;
+}
+
+
+
+
+
+.Imagen_Navbar {
+    height: 50px;;
+    width: 50px;;
+}
+.Logo {
+    height: 90px;
+    width: 90px;;
+}
