@@ -1,26 +1,51 @@
-.Navbar {
+body{
+    margin: 0;
+}
+
+.navbar {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 36px;
+    background-color: aqua;
+    padding: 0.8rem 0.8rem;
+    margin: 0rem;
+    color: white;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.nav_icon {
+    width: 54px;
+    height: 54px;
+}
+
+.logo, .perfil {
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex: 1;
+}
+
+.perfil {
     display: flex;
-    justify-content:space-between;
-    align-items:center;
-    padding: 16px 32px;
-    background-color: chartreuse;
+    justify-content: flex-end;
 }
 
-.menu {
-    display: flex; 
-    gap: 12px;      
+.nav_centro {
+    display: flex;
+    justify-content: center;
     list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
-
-
-
-
-.Imagen_Navbar {
-    height: 50px;;
-    width: 50px;;
-}
-.Logo {
-    height: 90px;
-    width: 90px;;
+.navbar a:hover {
+    transform: scale(1.15);
 }
