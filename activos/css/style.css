@@ -1,6 +1,11 @@
+
+/* CSS de reinicio */
+
 body{
     margin: 0;
 }
+
+/* CSS de la navbar */
 
 .navbar {
     display:flex;
@@ -48,4 +53,123 @@ body{
 
 .navbar a:hover {
     transform: scale(1.15);
+}
+
+
+/* CSS ÚNICO para index.html */
+
+.quienes_somos, .inicios, .terminos_condiciones {
+    background-color: brown;
+}
+
+.creador, .como_funciona {
+    background-color: burlywood;
+}
+
+ .titulo {
+    font-size: 35px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+ }
+
+.img_izquierda {
+    display: flex;  
+    float: left;
+    width: 350px;          
+    height: 350px;          
+    border-radius: 12px;
+    margin: 35px;
+}
+
+.img_derecha {
+    display: flex;  
+    float:right;
+    width: 350px;          
+    height: 350px;          
+    border-radius: 12px;
+    margin: 35px;
+}
+
+.texto_derecha, .texto_izquierda {
+    justify-content: center;
+    text-align:justify;
+    padding: 20px;
+    margin: 40px;
+    flex: 1;
+}
+
+.main {
+    background-color: beige;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between; /* Separa las 3 columnas equitativamente */
+    align-items: flex-start;        /* Alinea todo desde arriba */
+    flex-wrap: wrap;                /* Permite que baje en celulares */
+    gap: 30px;
+    background-color: #112233;      /* Fondo oscuro elegante (puedes cambiarlo) */
+    color: #ffffff;                 /* Texto blanco para buen contraste */
+    padding: 30px 50px;             /* Altura equilibrada y margen interno */
+    font-family: Arial, sans-serif;
+}
+
+.logo_footer {
+    width: 50px;
+    height: 50px;
+}
+
+.contactos h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+}
+
+.contactos p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.links {
+   display: flex;
+    flex-direction: column;         /* Pone los enlaces uno debajo del otro */
+    gap: 1px;
+}
+
+.links a:hover {
+    text-decoration: underline;     /* Subraya solo al pasar el mouse */
+    color: #00e5ff;
+}
+
+/*CSS inicio de sesion*/
+
+.Caja1_form {
+    margin: 34px;
+    box-sizing: border-box;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    overflow-wrap: break-word;
+    overflow: auto;
+    flex: 1;
+}
+ 
+.fotoForm {
+    display: flex;
+    justify-content: flex-start;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+ 
+.form1 {
+    justify-content: flex-start;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
