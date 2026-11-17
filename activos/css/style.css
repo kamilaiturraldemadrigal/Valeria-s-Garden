@@ -1,22 +1,31 @@
+
+/* CSS de reinicio */
+
 body{
     margin: 0;
 }
 
+/* CSS de la navbar */
+
 .navbar {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 36px;
-    background-color: aqua;
-    padding: 0.8rem 0.8rem;
-    margin: 0rem;
-    color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 36px;
+  padding: 0.6rem clamp(1rem, 4vw, 3rem);
+  background: #371E13;
+  border-bottom: 3px solid #5E2A25;
 }
 
 .navbar a {
     text-decoration: none;
-    color: white;
-    font-size: 2rem;
+    color: #E1D3A9;
+    font-size: 1.1rem;
+    font-weight: 500;
     transition: color 0.3s ease, transform 0.2s ease;
     display: inline-block;
 }
@@ -24,6 +33,7 @@ body{
 .nav_icon {
     width: 54px;
     height: 54px;
+    object-fit: contain;
 }
 
 .logo, .perfil {
@@ -39,6 +49,7 @@ body{
 
 .nav_centro {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     list-style: none;
     gap: 2rem;
@@ -48,4 +59,311 @@ body{
 
 .navbar a:hover {
     transform: scale(1.15);
+}
+
+
+
+/* CSS ÚNICO para index.html */
+
+
+/* ---------- TIPOGRAFÍA ---------- */
+/* Calora: solo para el nombre del sitio.
+   Guarden el archivo en activos/fuentes/ (ajusten la ruta/nombre si cambia). */
+@font-face {
+  font-family: "Calora";
+  src: url("../fuentes/Calora.woff2") format("woff2"),
+       url("../fuentes/Calora.otf") format("opentype");
+  font-display: swap;
+}
+
+/* Fuente general del sitio (similar a la de "october") */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
+
+/* ---------- PALETA ---------- */
+:root {
+  /* Base */
+  --creme:      #E1D3A9;
+  --clay-dust:  #C0AA8A;
+  --coffee:     #371E13;
+  --leather:    #734F31;
+
+  /* Profundidad */
+  --maroon:     #5E2A25;
+  --deep-peach: #A85530;
+  --guave:      #8F7C3A;
+  --river-pine: #534B31;
+
+  --font-logo: "Calora", "Cormorant Garamond", serif;
+  --font-main: "Cormorant Garamond", Georgia, serif;
+
+  --radius: 6px;
+  --nav-height: 76px;
+  --max-width: 1120px;
+}
+
+/* ---------- BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-padding-top: var(--nav-height);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--coffee);
+  background: var(--creme);
+}
+
+h1, h2 {
+  margin: 0 0 1rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--maroon);
+}
+
+p { margin: 0 0 1.1rem; }
+
+a {
+  color: var(--maroon);
+  text-underline-offset: 3px;
+}
+
+a:hover { color: var(--deep-peach); }
+
+:focus-visible {
+  outline: 3px solid var(--deep-peach);
+  outline-offset: 3px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* ---------- SECCIONES ---------- */
+main section {
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 3.5vw, 2.5rem);
+}
+
+/* Fondos alternados: crema / arcilla */
+main section:nth-child(odd)  { background: var(--creme); }
+main section:nth-child(even) { background: var(--clay-dust); }
+
+/* Contenedor de cada sección: dos columnas */
+main section > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---------- TEXTO ---------- */
+.texto_izquierda, .texto_derecha {
+  max-width: 60ch;
+}
+
+/* El texto queda pegado a la imagen */
+.texto_derecha   { justify-self: start; }
+.texto_izquierda { justify-self: end; }
+
+/* Columna explícita: la imagen va primero en el HTML,
+   pero img_derecha se muestra a la derecha */
+.img_izquierda, .texto_izquierda { grid-column: 1; grid-row: 1; }
+
+.img_derecha, .texto_derecha   { grid-column: 2; grid-row: 1; }
+
+/* Reparte el ancho: la imagen un poco más angosta que el texto */
+.img_izquierda, .img_derecha { justify-self: center; max-width: 420px; }
+
+main h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+}
+
+
+/* Nombre del sitio (h1.titulo de la primera sección) */
+#quienes_somos .titulo {
+  font-family: var(--font-logo);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--maroon);
+}
+
+/* ---------- IMÁGENES ---------- */
+.img_izquierda, .img_derecha {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 435px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--creme);
+  border: 2px solid var(--coffee);
+}
+
+
+/* Sobre fondo arcilla, la imagen se aclara */
+main section:nth-child(even) .img_izquierda,
+main section:nth-child(even) .img_derecha {
+  background: var(--creme);
+}
+
+/* ---------- BOTÓN ---------- */
+.button {
+  margin-top: 0.8rem;
+  padding: 0.75rem 2.2rem;
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--creme);
+  background: var(--maroon);
+  border: 2px solid var(--maroon);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.button:hover {
+  background: var(--deep-peach);
+  border-color: var(--deep-peach);
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding: 3rem clamp(1rem, 4vw, 3rem);
+  color: var(--creme);
+  background: var(--coffee);
+  border-top: 3px solid var(--maroon);
+}
+
+.footer section img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.footer h2 {
+  font-size: 1.6rem;
+  color: var(--clay-dust);
+}
+
+.footer p {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.footer a {
+  color: var(--creme);
+  text-decoration-color: var(--leather);
+}
+
+.footer a:hover {
+  color: var(--clay-dust);
+  text-decoration-color: var(--clay-dust);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  :root { --nav-height: 120px; }
+
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  /* Logo y perfil arriba, enlaces debajo */
+  .nav_centro {
+    order: 3;
+    width: 100%;
+    gap: 0.2rem 1.2rem;
+  }
+
+  .nav_centro a { font-size: 1rem; }
+}
+
+@media (max-width: 760px) {
+  body { font-size: 1.1rem; }
+
+  main section > div {
+    grid-template-columns: 1fr;
+  }
+
+  /* Todo en una sola columna, en el orden del HTML */
+  .img_izquierda, .img_derecha, .texto_izquierda, .texto_derecha {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  /* En móvil la imagen va siempre primero */
+  .img_izquierda, .img_derecha {
+    order: -1;
+    max-width: 420px;
+    max-height: 340px;
+    aspect-ratio: 4 / 3;
+    margin: 0 auto;
+  }
+
+  .img_izquierda, .img_derecha {
+    box-shadow: 10px 10px 0 var(--deep-peach);
+  }
+
+  .texto_izquierda, .texto_derecha {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer section img { margin: 0 auto; }
+}
+
+
+/*CSS inicio de sesion*/
+
+.Caja1_form {
+    margin: 34px;
+    box-sizing: border-box;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    overflow-wrap: break-word;
+    overflow: auto;
+    flex: 1;
+}
+ 
+.fotoForm {
+    display: flex;
+    justify-content: flex-start;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+ 
+.form1 {
+    justify-content: flex-start;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
