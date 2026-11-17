@@ -213,6 +213,7 @@ body{
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  flex-wrap: wrap;
 }
 
 .autor_foto {
@@ -234,6 +235,20 @@ body{
   display: block;
   font-size: 0.9rem;
   color:  #734F31;
+}
+
+/* Categoría de la publicación */
+.publicacion_categoria {
+  margin-left: auto;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: #E1D3A9;
+  background: #534B31;
+  border: 2px solid #371E13;
+  border-radius: 999px;
 }
 
 /* Foto de la publicación */
