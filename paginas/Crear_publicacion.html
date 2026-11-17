@@ -41,5 +41,103 @@
 
     <script src="../activos/js/script.js"></script>
 
+    <main>
+
+    <section id="crear_publicacion">
+
+        <h1 class="titulo">Crear publicación</h1>
+
+        <form class="crear_publicacion" action="#" method="post" enctype="multipart/form-data">
+
+            <!-- Tarjeta izquierda: foto y filtros -->
+            <div class="crear_foto">
+
+                <label class="zona_subida" for="foto">
+                    <input type="file" id="foto" name="foto" accept="image/*" required>
+                    <span class="subida_texto">
+                        <strong>Haga clic para elegir una foto</strong>
+                        <small>JPG, PNG o WEBP</small>
+                    </span>
+                    <img class="vista_imagen" src="" alt="Vista previa de la foto" hidden>
+                </label>
+
+                <fieldset class="filtros">
+                    <legend>Filtros</legend>
+
+                    <div class="filtros_lista">
+                        <label class="filtro">
+                            <input type="radio" name="filtro" value="normal" checked>
+                            <span>Normal</span>
+                        </label>
+
+                        <label class="filtro">
+                            <input type="radio" name="filtro" value="sepia">
+                            <span>Sepia</span>
+                        </label>
+
+                        <label class="filtro">
+                            <input type="radio" name="filtro" value="blanco_negro">
+                            <span>Blanco y negro</span>
+                        </label>
+
+                        <label class="filtro">
+                            <input type="radio" name="filtro" value="calido">
+                            <span>Cálido</span>
+                        </label>
+
+                        <label class="filtro">
+                            <input type="radio" name="filtro" value="vivido">
+                            <span>Vívido</span>
+                        </label>
+
+                        <label class="filtro">
+                            <input type="radio" name="filtro" value="suave">
+                            <span>Suave</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <!-- Tarjeta derecha: datos de la publicación -->
+            <div class="crear_datos">
+
+                <h2>Datos de la publicación</h2>
+
+                <div class="campo">
+                    <label for="titulo_publicacion">¿Cómo quiere llamar a su publicación?</label>
+                    <input type="text" id="titulo_publicacion" name="titulo" placeholder="Título de la publicación" maxlength="60" required>
+                </div>
+
+                <div class="campo">
+                    <label for="descripcion_publicacion">Descripción</label>
+                    <textarea id="descripcion_publicacion" name="descripcion" placeholder="Cuéntenos sobre su planta, sus cuidados..." required></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="categoria">Categoría (tipo de planta)</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="interior">Plantas de interior</option>
+                        <option value="suculentas">Suculentas y cactus</option>
+                        <option value="flores">Flores</option>
+                        <option value="hierbas">Hierbas y aromáticas</option>
+                        <option value="orquideas">Orquídeas</option>
+                        <option value="arbustos">Árboles y arbustos</option>
+                        <option value="frutales">Frutales</option>
+                        <option value="otras">Otras</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="button">Publicar</button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    </main>
+
 </body>
 </html>
