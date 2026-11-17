@@ -173,3 +173,235 @@ body{
     justify-content: flex-start;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+
+
+/* CSS para publicaciones */
+
+
+/* ---------- Tarjeta: publicación a la izquierda, comentarios a la derecha ---------- */
+.publicacion {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: stretch;
+  gap: clamp(1.2rem, 3vw, 2rem);
+  width: 100%; 
+  max-width: 1000px;
+  margin: 8px auto;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: #C0AA8A;
+  border: 2px solid #371E13;
+  border-radius: 6px;
+}
+
+#publicaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ---------- Lado izquierdo ---------- */
+.publicacion_principal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+/* Autor */
+.publicacion_autor {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.autor_foto {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  background: #E1D3A9;
+  border: 2px solid #371E13;
+  border-radius: 50%;
+}
+
+.autor_nombre {
+  display: block;
+  line-height: 1.2;
+  color: #5E2A25;
+}
+
+.publicacion_fecha {
+  display: block;
+  font-size: 0.9rem;
+  color:  #734F31;
+}
+
+/* Foto de la publicación */
+.publicacion_imagen {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #E1D3A9;
+  border: 3px solid #371E13;
+  border-radius: 6px;
+}
+
+/* Likes y descripción */
+.publicacion_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.btn_like {
+  align-self: flex-start;
+  padding: 0.3rem 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #5E2A25;
+  background: transparent;
+  border: 2px solid #5E2A25;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn_like:hover,
+.btn_like.activo {
+  color: #E1D3A9;
+  background: #5E2A25;
+}
+
+.publicacion_descripcion {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.publicacion_descripcion strong {
+  margin-right: 0.3rem;
+  color: #5E2A25;
+}
+
+/* ---------- Lado derecho: comentarios ---------- */
+.publicacion_comentarios {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.2rem;
+  background: #E1D3A9;
+  border: 2px solid #734F31;
+  border-radius: 6px;
+}
+
+.publicacion_comentarios h2 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+.lista_comentarios {
+  max-height: 380px;
+  margin: 0 0 1rem;
+  padding: 0 0.3rem 0 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.comentario {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+.comentario:last-child {
+  margin-bottom: 0;
+}
+
+.comentario_foto {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  background: #C0AA8A;
+  border: 2px solid #371E13;
+  border-radius: 50%;
+}
+
+.comentario_texto {
+  padding: 0.5rem 0.8rem;
+  background: #C0AA8A;
+  border-radius: 6px;
+}
+
+.comentario_texto strong {
+  color:  #5E2A25;
+}
+
+.comentario_texto p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+/* Escribir un comentario */
+.form_comentario {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.form_comentario input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.55rem 0.8rem;
+  font: inherit;
+  font-size: 1rem;
+  color: #371E13;
+  background: #C0AA8A;
+  border: 2px solid #734F31;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form_comentario input::placeholder {
+  color: #734F31;
+  opacity: 0.8;
+}
+
+.form_comentario input:focus {
+  outline: none;
+  border-color: #A85530;
+  box-shadow: 0 0 0 3px rgba(168, 85, 48, 0.3);
+}
+
+.form_comentario .button {
+  margin-top: 0;
+  padding: 0.55rem 1.2rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #E1D3A9;
+  background: #5E2A25;
+  border: 2px solid #5E2A25;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s,
+}
+
+.form_comentario .button:hover {
+  background: #A85530;
+  border-color: #A85530;
+}
+
+/* ---------- Móvil y tablet: comentarios debajo ---------- */
+@media (max-width: 860px) {
+  .publicacion {
+    grid-template-columns: 1fr;
+    box-shadow: 8px 8px 0 #A85530;
+  }
+
+  .lista_comentarios {
+    max-height: 300px;
+  }
+}
