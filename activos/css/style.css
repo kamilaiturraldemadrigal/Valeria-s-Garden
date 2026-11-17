@@ -18,7 +18,7 @@ body{
   min-height: 36px;
   padding: 0.6rem clamp(1rem, 4vw, 3rem);
   background: #371E13;
-  border-bottom: 3px solid #5E2A25;
+  box-shadow:0 8px 24px rgba(55, 30, 19, 0.5);
 }
 
 .navbar a {
@@ -337,33 +337,164 @@ main section:nth-child(even) .img_derecha {
 }
 
 
-/*CSS inicio de sesion*/
+/* INICIO DE SESIÓN */
 
 .Caja1_form {
-    margin: 34px;
-    box-sizing: border-box;
-    background-color: beige;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-    padding: 30px;
-    border: 2px solid black;
-    border-radius: 8px;
-    overflow-wrap: break-word;
-    overflow: auto;
-    flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 3.5vw, 2.5rem);
 }
- 
-.fotoForm {
-    display: flex;
-    justify-content: flex-start;
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
+
+.Caja1_form > .Datos_personales {
+  display: block;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  background: var(--clay-dust);
+  border: 3px solid var(--coffee);
+  border-radius: var(--radius);
 }
- 
+
+.Datos_personales h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+}
+
 .form1 {
-    justify-content: flex-start;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: var(--font-main);
+}
+
+/* Parte de arriba de inicio de sesión*/
+.form_superior {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.fotoForm {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  background: var(--creme);
+  border-radius: 50%;
+}
+
+.form_datos {
+  display: grid;
+  gap: 1.2rem;
+}
+
+/* Parte de abajo de inicio de sesión */
+.form_inferior {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1.5rem;
+}
+
+.campo_ancho {
+  grid-column: 1 / -1;
+}
+
+/**/
+.form1 label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--coffee);
+}
+
+.form1 input, .form1 select, .form1 textarea {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--coffee);
+  background: var(--creme);
+  border: 2px solid var(--leather);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form1 select { cursor: pointer; }
+
+.form1 textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form1 ::placeholder {
+  color: var(--leather);
+  opacity: 0.7;
+}
+
+/* Select sin elegir todavía: se ve como placeholder */
+.form1 select:invalid { color: var(--leather); }
+
+.form1 input:hover, .form1 select:hover, .form1 textarea:hover {
+  border-color: var(--maroon);
+}
+
+.form1 input:focus, .form1 select:focus, .form1 textarea:focus {
+  outline: none;
+  border-color: var(--deep-peach);
+  box-shadow: 0 0 0 3px rgba(168, 85, 48, 0.3);
+}
+
+.form_inferior .button {
+  grid-column: 1 / -1;
+  justify-self: end;
+  min-width: 220px;
+  margin-top: 0.6rem;
+  padding: 0.8rem 1.5rem;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--creme);
+  background: var(--maroon);
+  border: 2px solid var(--maroon);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.form_inferior .button:hover {
+  background: var(--deep-peach);
+  border-color: var(--deep-peach);
+}
+
+/* Adaptación a celulares */
+@media (max-width: 760px) {
+  .Caja1_form > .Datos_personales {
+    box-shadow: 8px 8px 0 var(--deep-peach);
+  }
+
+  .form_superior {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .form_datos {
+    width: 100%;
+  }
+
+  .fotoForm {
+    width: 120px;
+    height: 120px;
+  }
+
+  .form_inferior {
+    grid-template-columns: 1fr;
+  }
+
+  .form_inferior .button {
+    justify-self: stretch;
+  }
 }
