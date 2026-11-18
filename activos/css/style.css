@@ -81,7 +81,7 @@ body{
     transform: scale(1.15);
 }
 
-/* Responsivo */
+/* Responsivo de Navbar */
 @media (max-width: 520px) {
     .eslogan {
         display: none;
@@ -89,7 +89,7 @@ body{
 }
 
 
-/* CSS ÚNICO para index.html */
+/* CSS para index.html conocenos */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -142,7 +142,7 @@ img {
 }
 
 
-/* Secciones */
+/* Secciones del index.html */
 
 main section {
   padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 3.5vw, 2.5rem);
@@ -180,7 +180,7 @@ main h1 {
 }
 
 
-/* Nombre del sitio web */
+/* Nombre del sitio web de index.html */
 
 #quienes_somos .titulo {
   font-family: "Calora", "Cormorant Garamond", serif;
@@ -191,7 +191,7 @@ main h1 {
   color: #5E2A25;
 }
 
-/* Imagenes */
+/* Imagenes de index.html */
 .img_izquierda, .img_derecha {
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -226,7 +226,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   border-color: #734F31;
 }
 
-/* Footer */
+/* Footer de index.html */
 
 .footer {
   display: grid;
@@ -266,7 +266,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   text-decoration-color: #E0C9A6;
 }
 
-/* CSS para que sea responsivo*/
+/* CSS para que sea responsivo el index.html */
 
 @media (max-width: 900px) {
   html {
@@ -324,6 +324,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   .footer section img { margin: 0 auto; }
 }
 
+
+
 /* CSS para publicaciones */
 
 .publicacion {
@@ -355,7 +357,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   min-width: 0;
 }
 
-/* Autor */
+/* Autor de la publicacion*/
 .publicacion_autor {
   display: flex;
   align-items: center;
@@ -412,7 +414,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   gap: 0.7rem;
 }
 
-/* Fila con me gusta y eliminar */
+
+/* Fila con me gusta y eliminar de la publicacion */
 .publicacion_acciones {
   display: flex;
   align-items: center;
@@ -444,8 +447,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   outline-offset: 3px;
 }
 
-/* Me gusta */
 
+/* Me gusta de la publicacion*/
 .btn_like {
   align-self: flex-start;
   padding: 0.3rem 1rem;
@@ -475,8 +478,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   color: #5E2A25;
 }
 
-/* Lado derecho (Comentarios) */
 
+/* Lado derecho (Comentarios) de publicacion */
 .publicacion_comentarios {
   display: flex;
   flex-direction: column;
@@ -537,7 +540,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   line-height: 1.45;
 }
 
-/* Escribir un comentario */
+
+/* Escribir un comentario de publicacion*/
 .form_comentario {
   display: flex;
   gap: 0.6rem;
@@ -587,8 +591,9 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   border-color: #734F31;
 }
 
-/* CSS para que las publicaciones sean responsivas */
 
+
+/* CSS para que las publicaciones sean responsivas */
 @media (max-width: 860px) {
   .publicacion {
     grid-template-columns: 1fr;
@@ -602,17 +607,16 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
 
 
 /* CSS para la parte de busqueda */
-
 #busqueda {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: clamp(3rem, 12vh, 7rem);   /* baja un poco, sin quedar en el medio */
+  padding-top: clamp(3rem, 12vh, 7rem);  
   padding-bottom: 1.5rem;
 }
 
-/* (lectores de pantalla) */
 
+/* (CSS para lectores de pantalla) de busqueda */
 .oculto_visual {
   position: absolute;
   width: 1px;
@@ -622,11 +626,10 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   white-space: nowrap;
 }
 
-/* Barra de busqueda */
 
+/* Barra de busqueda */
 .body_buscar {
   background-image: url("../imagenes/Publicaciones/fondo_buscar.jpeg");
-
 }
 
 .busqueda {
@@ -676,8 +679,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   box-shadow: 0 0 0 4px rgba(63, 86, 72, 0.3);
 }
 
-/* Botones de categorías */
 
+/* Botones de categorías de busqueda*/
 .categorias {
   display: flex;
   flex-wrap: wrap;
@@ -726,8 +729,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   outline-offset: 2px;
 }
 
-/* Mensaje usando funcionalidad de JS */
 
+/* Mensaje usando funcionalidad de JS de busqueda*/
 .busqueda_resultado {
   margin: 1.5rem 0 0;
   text-align: center;
@@ -743,8 +746,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   display: none;
 }
 
-/* Parte dónde se hace responsivo en busquedas */
 
+/* Parte dónde se hace responsivo en busquedas */
 @media (max-width: 760px) {
   .categorias {
     flex-wrap: nowrap;
@@ -761,7 +764,6 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
 
 
 /* CSS para perfil de usuario */
-
 #perfil_usuario {
   display: flex;
   flex-direction: column;
@@ -779,8 +781,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   border-radius: 6px;
 }
 
-/* Arriba: foto de perfil y nombre de usuario */
-
+/* Arriba: foto de perfil y nombre de usuario. De perfil de usuario */
 .perfil_cabecera {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -813,8 +814,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   color: #734F31;
 }
 
-/* Botón para "cambiar foto" */
-
+/* Botón para "cambiar foto" de perfil de usuario */
 .perfil_cambiar_foto {
   position: relative;
   display: inline-block;
@@ -851,8 +851,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   display: none;
 }
 
-/* Parte de abajo: información personal */
-
+/* Parte de abajo: información personal de perfil de usuario */
 .perfil_datos_encabezado {
   display: flex;
   align-items: center;
@@ -868,7 +867,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   font-size: clamp(1.5rem, 3.5vw, 1.9rem);
 }
 
-/* Botón "Editar datos" y "Cancelar" */
+/* Botón "Editar datos" y "Cancelar" de perfil de usuario */
 .btn_editar, .btn_secundario {
   padding: 0.5rem 1.4rem;
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -963,8 +962,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   field-sizing: content;
 }
 
-/* Botón guardar. Botón cancelar */
-
+/* Botón guardar. Botón cancelar de pefil de usuario */
 .perfil_acciones {
   display: flex;
   justify-content: flex-end;
@@ -991,8 +989,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   border-color: #734F31;
 }
 
-/* Aviso de cambios guardados */
-
+/* Aviso de cambios guardados de perfil de usuario*/
 .perfil_mensaje {
   margin: 1rem 0 0;
   font-weight: 600;
@@ -1003,8 +1000,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   display: none;
 }
 
-/* Hacerlo responsivo */
-
+/* Hacerlo responsivo (el perfil de usuario)*/
 @media (max-width: 600px) {
   .perfil_cabecera {
     grid-template-columns: 1fr;
@@ -1031,8 +1027,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
 }
 
 
-/* Inicio de sesión */
 
+/* Inicio de sesión */
 .Caja1_form {
   display: flex;
   justify-content: center;
@@ -1059,8 +1055,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   font-family: "Cormorant Garamond", Georgia, serif;
 }
 
-/* Parte de arriba */
-
+/* Parte de arriba del inicio de sesion */
 .form_superior {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -1083,8 +1078,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   gap: 1.2rem;
 }
 
-/* Parte de abajo */
 
+/* Parte de abajo del inicio de sesion*/
 .form_inferior {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1164,8 +1159,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   border-color: #734F31;
 }
 
-/* Responsivo */
 
+/* Responsivo del inicio de sesion*/
 @media (max-width: 760px) {
   .Caja1_form > .Datos_personales {
     box-shadow: 8px 8px 0 #A88F6E;
@@ -1194,8 +1189,9 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   }
 }
 
-/*CSS para crear publicacion*/
 
+
+/*CSS para crear publicacion*/
 #crear_publicacion .titulo {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -1283,8 +1279,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   display: none;
 }
 
-/* Filtros */
-
+/* Filtros de crear publicacion*/
 .filtros {
   margin: 1.5rem 0 0;
   padding: 0;
@@ -1344,8 +1339,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   outline-offset: 2px;
 }
 
-/* Aplicar filtro */
-
+/* Aplicar filtro de crear publicacion */
 .crear_foto:has(input[value="sepia"]:checked) .vista_imagen {
   filter: sepia(0.85);
 }
@@ -1366,8 +1360,8 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   filter: brightness(1.08) contrast(0.88) saturate(0.9);
 }
 
-/* Formulario de crear publicación */
 
+/* Formulario de crear publicación */
 .crear_datos h2 {
   margin: 0 0 1.4rem;
   font-size: clamp(1.5rem, 3.5vw, 1.9rem);
@@ -1451,7 +1445,7 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   border-color: #734F31;
 }
 
-/* Hacer esta sección responsiva */
+/* Hacer esta sección de crear publicacion, responsiva */
 
 @media (max-width: 860px) {
   .crear_publicacion {

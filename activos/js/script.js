@@ -1,7 +1,15 @@
+/* =====================================================
+   VALERIA'S GARDEN · script.js
+   ===================================================== */
+
+/* ---------- DATOS GENERALES ---------- */
+
+// Claves con las que se guarda la información en el navegador
 const CLAVE_PUBLICACIONES = "valerias_garden_publicaciones";
 const CLAVE_PERFIL = "valerias_garden_perfil";
 const FOTO_PERFIL_DEFECTO = "../activos/imagenes/Navbar/perfil.png";
 
+// Categorías: el valor interno y el texto que se muestra
 const CATEGORIAS = {
   interior: "Plantas de interior",
   suculentas: "Suculentas y cactus",
@@ -13,6 +21,7 @@ const CATEGORIAS = {
   otras: "Otras"
 };
 
+// Filtros de foto (los mismos del formulario de crear publicación)
 const FILTROS_CSS = {
   normal: "none",
   sepia: "sepia(0.85)",
@@ -23,8 +32,11 @@ const FILTROS_CSS = {
 };
 
 
-/* Usos, utilidades */
+/* =====================================================
+   UTILIDADES
+   ===================================================== */
 
+// Evita que un texto escrito por el usuario se interprete como código HTML
 function escaparHTML(texto) {
   return String(texto).replace(/[&<>"']/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -36,6 +48,7 @@ function normalizar(texto) {
   return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
+// Devuelve el arreglo de publicaciones guardado en el navegador
 function leerPublicaciones() {
   try {
     return JSON.parse(localStorage.getItem(CLAVE_PUBLICACIONES)) || [];
@@ -44,6 +57,7 @@ function leerPublicaciones() {
   }
 }
 
+// Guarda el arreglo de publicaciones. Devuelve false si no se pudo
 function guardarPublicaciones(lista) {
   try {
     localStorage.setItem(CLAVE_PUBLICACIONES, JSON.stringify(lista));
@@ -66,14 +80,16 @@ function nombreUsuario() {
   return (perfil && perfil.datos && perfil.datos.nombre) || "Usuario";
 }
 
+// La foto de perfil guardada solo se muestra para el usuario actual
 function fotoDe(autor) {
   const perfil = leerPerfil();
   if (perfil && perfil.foto && autor === nombreUsuario()) return perfil.foto;
   return FOTO_PERFIL_DEFECTO;
 }
 
+// Busca una publicación por id, la modifica y guarda el arreglo
 function actualizarPublicacion(id, cambiar) {
-  if (!id) return; // tarjetas escritas a mano en el HTML no se guardan
+  if (!id) return; // las tarjetas escritas a mano en el HTML no se guardan
   const lista = leerPublicaciones();
   const publicacion = lista.find(function (p) { return p.id === id; });
   if (!publicacion) return;
@@ -82,8 +98,12 @@ function actualizarPublicacion(id, cambiar) {
 }
 
 
-/* páginas de publicaciones y buscar. Páginas guardadas */
+/* =====================================================
+   MOSTRAR PUBLICACIONES GUARDADAS
+   (páginas de Publicaciones y Buscar)
+   ===================================================== */
 
+// Crea el HTML de un comentario
 function crearComentario(comentario) {
   return `
     <li class="comentario">
@@ -95,8 +115,9 @@ function crearComentario(comentario) {
     </li>`;
 }
 
+// Crea el HTML de una publicación completa
 function crearTarjeta(pub) {
-    const esMia = pub.autor === nombreUsuario(); 
+  const esMia = pub.propia || pub.autor === nombreUsuario();
   const fecha = new Date(pub.fecha).toLocaleDateString("es-CR", {
     day: "numeric", month: "long", year: "numeric"
   });
@@ -119,12 +140,12 @@ function crearTarjeta(pub) {
         <img src="${escaparHTML(pub.foto)}" alt="${escaparHTML(pub.titulo)}" class="publicacion_imagen" style="filter: ${filtro}">
 
         <div class="publicacion_info">
-            <div class="publicacion_acciones">
-                <button type="button" class="btn_like${pub.meGusta ? " activo" : ""}" aria-label="Me gusta" aria-pressed="${pub.meGusta ? "true" : "false"}">
-                ♥ <span class="likes_cantidad">${pub.likes || 0}</span>
-                </button>
-                ${esMia ? '<button type="button" class="btn_borrar">Eliminar</button>' : ""}
-            </div>
+          <div class="publicacion_acciones">
+            <button type="button" class="btn_like${pub.meGusta ? " activo" : ""}" aria-label="Me gusta" aria-pressed="${pub.meGusta ? "true" : "false"}">
+              ♥ <span class="likes_cantidad">${pub.likes || 0}</span>
+            </button>
+            ${esMia ? '<button type="button" class="btn_borrar">Eliminar</button>' : ""}
+          </div>
           <h3 class="publicacion_titulo">${escaparHTML(pub.titulo)}</h3>
           <p class="publicacion_descripcion">
             <strong>${escaparHTML(pub.autor)}</strong>
@@ -145,11 +166,12 @@ function crearTarjeta(pub) {
     </article>`;
 }
 
+// Recorre el arreglo y muestra cada publicación en la página
 function mostrarPublicacionesGuardadas() {
   let contenedor = document.getElementById("publicaciones");
   const busqueda = document.querySelector(".busqueda");
 
-
+  // Si la página de búsqueda no tiene dónde mostrarlas, crea el espacio
   if (!contenedor && busqueda) {
     contenedor = document.createElement("section");
     contenedor.id = "publicaciones";
@@ -172,7 +194,9 @@ function mostrarPublicacionesGuardadas() {
 mostrarPublicacionesGuardadas();
 
 
-/* Los me gusta */
+/* =====================================================
+   ME GUSTA
+   ===================================================== */
 
 document.addEventListener("click", function (evento) {
   const boton = evento.target.closest(".btn_like");
@@ -188,6 +212,7 @@ document.addEventListener("click", function (evento) {
   contador.textContent = nueva;
   boton.setAttribute("aria-pressed", activo);
 
+  // Guarda el nuevo número en el arreglo
   const tarjeta = boton.closest(".publicacion");
   actualizarPublicacion(tarjeta && tarjeta.dataset.id, function (p) {
     p.likes = nueva;
@@ -195,7 +220,10 @@ document.addEventListener("click", function (evento) {
   });
 });
 
-/* Eliminar publicación */
+
+/* =====================================================
+   ELIMINAR PUBLICACIÓN
+   ===================================================== */
 
 document.addEventListener("click", function (evento) {
   const boton = evento.target.closest(".btn_borrar");
@@ -206,20 +234,23 @@ document.addEventListener("click", function (evento) {
 
   if (!confirm("¿Desea eliminar esta publicación? Esta acción no se puede deshacer.")) return;
 
+  // Quita la publicación del arreglo y vuelve a guardarlo
   const lista = leerPublicaciones().filter(function (p) {
     return p.id !== tarjeta.dataset.id;
   });
 
   if (!guardarPublicaciones(lista)) return;
 
-  tarjeta.remove();
+  tarjeta.remove(); // la quita de la página
 
   // Avisa a la búsqueda para que actualice el mensaje de "sin resultados"
   document.dispatchEvent(new Event("publicaciones:cambio"));
 });
 
 
-/* Los comentarios */
+/* =====================================================
+   COMENTARIOS
+   ===================================================== */
 
 document.addEventListener("submit", function (evento) {
   const formulario = evento.target.closest(".form_comentario");
@@ -248,7 +279,9 @@ document.addEventListener("submit", function (evento) {
 });
 
 
-/* Parte de la barra de busqueda y los botones de categorías */
+/* =====================================================
+   BÚSQUEDA Y CATEGORÍAS
+   ===================================================== */
 
 const buscador = document.getElementById("buscar");
 
@@ -257,6 +290,7 @@ if (buscador) {
   const mensaje = document.querySelector(".busqueda_resultado");
   let categoriaActiva = "todas";
 
+  // Muestra u oculta cada publicación según el texto y la categoría
   function filtrar() {
     const texto = normalizar(buscador.value.trim());
     const tarjetas = document.querySelectorAll(".publicacion");
@@ -266,6 +300,7 @@ if (buscador) {
       const coincideCategoria =
         categoriaActiva === "todas" || tarjeta.dataset.categoria === categoriaActiva;
 
+      // Busca en autor, fecha, categoría, título y descripción (no en comentarios)
       const contenido = normalizar(
         tarjeta.querySelector(".publicacion_principal").textContent
       );
@@ -289,12 +324,13 @@ if (buscador) {
   }
 
   buscador.addEventListener("input", filtrar);
+  document.addEventListener("publicaciones:cambio", filtrar);
 
   document.querySelector(".busqueda").addEventListener("submit", function (evento) {
     evento.preventDefault();
-    document.addEventListener("publicaciones:cambio", filtrar);
   });
 
+  // Botones de categoría: marca el elegido y filtra
   botones.forEach(function (boton) {
     boton.addEventListener("click", function () {
       categoriaActiva = boton.dataset.categoria;
@@ -313,17 +349,21 @@ if (buscador) {
 }
 
 
-/* Crear publicación */
+/* =====================================================
+   CREAR PUBLICACIÓN
+   ===================================================== */
 
 const formCrear = document.querySelector(".crear_publicacion");
 
 if (formCrear) {
   const inputFoto = document.getElementById("foto");
   const vista = formCrear.querySelector(".vista_imagen");
+  const campoUsuario = formCrear.elements.usuario; // campo "Nombre de usuario"
   let urlActual = null;
-  const campoUsuario = formCrear.elements.usuario;
 
+  // Rellena el nombre de usuario con el del perfil (se puede cambiar)
   function rellenarUsuario() {
+    if (!campoUsuario) return;
     const nombre = nombreUsuario();
     campoUsuario.value = nombre === "Usuario" ? "" : nombre;
   }
@@ -337,6 +377,7 @@ if (formCrear) {
     vista.hidden = true;
   }
 
+  // Muestra un mensaje debajo del formulario (esError lo pone en rojo)
   function mostrarAviso(texto, enlace, esError) {
     let aviso = formCrear.querySelector(".perfil_mensaje");
     if (!aviso) {
@@ -357,11 +398,11 @@ if (formCrear) {
     }
   }
 
-  /* Revisa los datos antes de publicar */
+  // Revisa los datos antes de publicar y devuelve la lista de errores
   function validarPublicacion(datos, archivo) {
     const errores = [];
 
-    const usuario = (datos.get("usuario") || "").trim();
+    const usuario = (datos.get("usuario") || nombreUsuario()).trim();
     const titulo = (datos.get("titulo") || "").trim();
     const descripcion = (datos.get("descripcion") || "").trim();
 
@@ -384,6 +425,7 @@ if (formCrear) {
     return errores;
   }
 
+  // Reduce la foto para que quepa en la memoria del navegador
   function comprimirImagen(archivo) {
     return new Promise(function (resolver, rechazar) {
       const lector = new FileReader();
@@ -415,6 +457,7 @@ if (formCrear) {
     });
   }
 
+  // Vista previa de la foto elegida (los filtros se ven sobre ella)
   inputFoto.addEventListener("change", function () {
     const archivo = inputFoto.files[0];
 
@@ -426,7 +469,7 @@ if (formCrear) {
     if (!archivo.type.startsWith("image/")) {
       inputFoto.value = "";
       ocultarVista();
-      mostrarAviso("Elija un archivo de imagen (JPG, PNG o WEBP).");
+      mostrarAviso("Elija un archivo de imagen (JPG, PNG o WEBP).", null, true);
       return;
     }
 
@@ -436,15 +479,14 @@ if (formCrear) {
     vista.hidden = false;
   });
 
-
-  /* Publicar: Valida, guarda la publicación y avisa*/
-    
+  // Al publicar: valida, guarda la publicación y avisa
   formCrear.addEventListener("submit", async function (evento) {
     evento.preventDefault();
 
     const archivo = inputFoto.files[0];
     const datos = new FormData(formCrear);
 
+    // 1. Validar los datos
     const errores = validarPublicacion(datos, archivo);
     if (errores.length > 0) {
       mostrarAviso(errores.join(" "), null, true);
@@ -452,13 +494,13 @@ if (formCrear) {
     }
 
     try {
-      
+      // 2. Crear el objeto de la publicación
       const foto = await comprimirImagen(archivo);
 
       const nueva = {
         id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
-        autor: datos.get("usuario").trim(),
-        propia: true, 
+        autor: (datos.get("usuario") || nombreUsuario()).trim(),
+        propia: true, // creada en este navegador: se podrá eliminar
         foto: foto,
         titulo: datos.get("titulo").trim(),
         descripcion: datos.get("descripcion").trim(),
@@ -470,16 +512,16 @@ if (formCrear) {
         comentarios: []
       };
 
-      
+      // 3. Agregarla al arreglo y guardarlo
       const lista = leerPublicaciones();
-      lista.unshift(nueva); 
+      lista.unshift(nueva); // la más nueva primero
 
       if (!guardarPublicaciones(lista)) {
         mostrarAviso("No se pudo guardar: la memoria del navegador está llena. Pruebe con una foto más pequeña.", null, true);
         return;
       }
 
-      
+      // 4. Limpiar el formulario y avisar
       formCrear.reset();
       rellenarUsuario();
       ocultarVista();
@@ -488,54 +530,12 @@ if (formCrear) {
       mostrarAviso("No se pudo procesar la foto. Pruebe con otra imagen.", null, true);
     }
   });
-  
-
-    const archivo = inputFoto.files[0];
-    if (!archivo) {
-      mostrarAviso("Elija una foto para su publicación.");
-      return;
-    }
-
-    const datos = new FormData(formCrear);
-
-    try {
-      const foto = await comprimirImagen(archivo);
-
-      const nueva = {
-        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
-        autor: nombreUsuario(),
-        foto: foto,
-        titulo: (datos.get("titulo") || "").trim(),
-        descripcion: (datos.get("descripcion") || "").trim(),
-        categoria: datos.get("categoria") || "otras",
-        filtro: datos.get("filtro") || "normal",
-        fecha: new Date().toISOString(),
-        likes: 0,
-        meGusta: false,
-        comentarios: []
-      };
-
-      const lista = leerPublicaciones();
-      lista.unshift(nueva);
-
-      if (!guardarPublicaciones(lista)) {
-        mostrarAviso("No se pudo guardar: la memoria del navegador está llena. Pruebe con una foto más pequeña.");
-        return;
-      }
-
-      formCrear.reset();
-      ocultarVista();
-      mostrarAviso("Publicación creada.", { href: "Publicaciones.html", texto: "Verla en publicaciones" });
-    } catch (error) {
-      mostrarAviso("No se pudo procesar la foto. Pruebe con otra imagen.");
-    }
-  });
 }
 
 
-
-
-/* JS para el perfil de usuario */
+/* =====================================================
+   PERFIL DE USUARIO
+   ===================================================== */
 
 const formPerfil = document.getElementById("form_perfil");
 
@@ -553,10 +553,11 @@ if (formPerfil) {
 
   const NOMBRES = ["nombre", "correo", "pais", "provincia", "descripcion"];
 
-  let respaldoDatos = null;
+  let respaldoDatos = null; // datos antes de editar (para "Cancelar")
   let respaldoFoto = null;
   let temporizador = null;
 
+  // Lee los valores actuales del formulario
   function leerDatos() {
     const datos = {};
     NOMBRES.forEach(function (nombre) {
@@ -565,6 +566,7 @@ if (formPerfil) {
     return datos;
   }
 
+  // Escribe los datos en el formulario y en el título
   function escribirDatos(datos) {
     NOMBRES.forEach(function (nombre) {
       if (datos[nombre] !== undefined) {
@@ -582,6 +584,7 @@ if (formPerfil) {
     }, 4000);
   }
 
+  // Activa o desactiva el modo de edición
   function modoEdicion(activo) {
     campos.disabled = !activo;
     acciones.hidden = !activo;
@@ -596,6 +599,7 @@ if (formPerfil) {
     if (guardado.foto) foto.src = guardado.foto;
   }
 
+  // Botón "Editar datos"
   btnEditar.addEventListener("click", function () {
     respaldoDatos = leerDatos();
     respaldoFoto = foto.src;
@@ -604,6 +608,7 @@ if (formPerfil) {
     formPerfil.elements.nombre.focus();
   });
 
+  // Botón "Cancelar": vuelve a lo que había antes
   btnCancelar.addEventListener("click", function () {
     escribirDatos(respaldoDatos);
     foto.src = respaldoFoto;
@@ -612,6 +617,7 @@ if (formPerfil) {
     btnEditar.focus();
   });
 
+  // Cambiar la foto de perfil (vista previa inmediata)
   inputFoto.addEventListener("change", function () {
     const archivo = inputFoto.files[0];
     if (!archivo) return;
@@ -629,8 +635,9 @@ if (formPerfil) {
     lector.readAsDataURL(archivo);
   });
 
+  // Botón "Guardar cambios"
   formPerfil.addEventListener("submit", function (evento) {
-    evento.preventDefault();
+    evento.preventDefault(); // evita que la página se recargue
 
     const datos = leerDatos();
     datos.nombre = datos.nombre.trim();
