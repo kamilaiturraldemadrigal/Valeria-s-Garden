@@ -39,6 +39,100 @@
 
     </header>
 
+    <main>
+
+    <section id="perfil_usuario">
+
+        <!-- Tarjeta 1: foto y nombre -->
+        <article class="perfil_tarjeta perfil_cabecera">
+
+            <img src="../activos/imagenes/Navbar/perfil.png" alt="Foto de perfil" class="perfil_foto" id="perfil_foto">
+
+            <div class="perfil_identidad">
+                <h1 class="perfil_nombre" id="perfil_nombre">Ana</h1>
+                <p class="perfil_subtitulo">Miembro de la comunidad</p>
+
+                <!-- Solo aparece al editar -->
+                <label class="perfil_cambiar_foto" for="nueva_foto" id="cambiar_foto" hidden>
+                    Cambiar foto
+                    <input type="file" id="nueva_foto" accept="image/*">
+                </label>
+            </div>
+
+        </article>
+
+        <!-- Tarjeta 2: información personal -->
+        <article class="perfil_tarjeta perfil_datos">
+
+            <div class="perfil_datos_encabezado">
+                <h2>Información personal</h2>
+                <button type="button" class="btn_editar" id="btn_editar">Editar datos</button>
+            </div>
+
+            <form id="form_perfil">
+
+                <fieldset class="perfil_campos" id="campos_perfil" disabled>
+                    <legend class="oculto_visual">Datos personales</legend>
+
+                    <div class="campo">
+                        <label for="perfil_input_nombre">Nombre de usuario</label>
+                        <input type="text" id="perfil_input_nombre" name="nombre" value="Ana" maxlength="40" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="perfil_input_correo">Correo</label>
+                        <input type="email" id="perfil_input_correo" name="correo" value="ana@gmail.com" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="perfil_input_pais">País de origen</label>
+                        <select id="perfil_input_pais" name="pais" required>
+                            <option value="costaRica" selected>Costa Rica</option>
+                            <option value="belice">Belice</option>
+                            <option value="elSalvador">El Salvador</option>
+                            <option value="guatemala">Guatemala</option>
+                            <option value="honduras">Honduras</option>
+                            <option value="nicaragua">Nicaragua</option>
+                            <option value="panama">Panamá</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="perfil_input_provincia">Provincia</label>
+                        <select id="perfil_input_provincia" name="provincia" required>
+                            <option value="sanJose" selected>San José</option>
+                            <option value="alajuela">Alajuela</option>
+                            <option value="cartago">Cartago</option>
+                            <option value="heredia">Heredia</option>
+                            <option value="puntarenas">Puntarenas</option>
+                            <option value="limon">Limón</option>
+                            <option value="guanacaste">Guanacaste</option>
+                            <option value="noValido">No válido</option>
+                        </select>
+                    </div>
+
+                    <div class="campo campo_ancho">
+                        <label for="perfil_input_descripcion">Descripción</label>
+                        <textarea id="perfil_input_descripcion" name="descripcion" rows="3" required>Amante de las plantas. Mi monstera es mi orgullo.</textarea>
+                    </div>
+
+                </fieldset>
+
+                <!-- Solo aparecen al editar -->
+                <div class="perfil_acciones" id="acciones_edicion" hidden>
+                    <button type="button" class="btn_secundario" id="btn_cancelar">Cancelar</button>
+                    <button type="submit" class="button">Guardar cambios</button>
+                </div>
+
+            </form>
+
+            <p class="perfil_mensaje" id="perfil_mensaje" aria-live="polite"></p>
+
+        </article>
+
+    </section>
+    </main>
+
     <script src="../activos/js/script.js"></script>
 
 </body>
