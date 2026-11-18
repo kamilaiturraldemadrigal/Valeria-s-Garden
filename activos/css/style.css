@@ -1002,3 +1002,165 @@ main section:nth-child(even) .img_derecha {
     width: 100%;
   }
 }
+
+/* INICIO DE SESIÓN */
+ 
+.Caja1_form {
+  display: flex;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 3.5vw, 2.5rem);
+}
+ 
+.Caja1_form > .Datos_personales {
+  display: block;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  background: #C0AA8A;
+  border: 3px solid #371E13;
+  border-radius: 6px;
+}
+ 
+.Datos_personales h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+}
+ 
+.form1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+ 
+/* Parte de arriba de inicio de sesión*/
+.form_superior {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+ 
+.fotoForm {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  background: #E1D3A9;
+  border-radius: 50%;
+}
+ 
+.form_datos {
+  display: grid;
+  gap: 1.2rem;
+}
+ 
+/* Parte de abajo de inicio de sesión */
+.form_inferior {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1.5rem;
+}
+ 
+.campo_ancho {
+  grid-column: 1 / -1;
+}
+ 
+/**/
+.form1 label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #371E13;
+}
+ 
+.form1 input, .form1 select, .form1 textarea {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #371E13;
+  background: #E1D3A9;
+  border: 2px solid #734F31;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+ 
+.form1 select { cursor: pointer; }
+ 
+.form1 textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+ 
+.form1 ::placeholder {
+  color: #734F31;
+  opacity: 0.7;
+}
+ 
+/* Select sin elegir todavía: se ve como placeholder */
+.form1 select:invalid { color: #734F31; }
+ 
+.form1 input:hover, .form1 select:hover, .form1 textarea:hover {
+  border-color: #5E2A25;
+}
+ 
+.form1 input:focus, .form1 select:focus, .form1 textarea:focus {
+  outline: none;
+  border-color: #A85530;
+  box-shadow: 0 0 0 3px rgba(168, 85, 48, 0.3);
+}
+ 
+.form_inferior .button {
+  grid-column: 1 / -1;
+  justify-self: end;
+  min-width: 220px;
+  margin-top: 0.6rem;
+  padding: 0.8rem 1.5rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #E1D3A9;
+  background: #5E2A25;
+  border: 2px solid #5E2A25;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+ 
+.form_inferior .button:hover {
+  background: #A85530;
+  border-color: #A85530;
+}
+ 
+/* Adaptación a celulares */
+@media (max-width: 760px) {
+  .Caja1_form > .Datos_personales {
+    box-shadow: 8px 8px 0 #A85530;
+  }
+ 
+  .form_superior {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+ 
+  .form_datos {
+    width: 100%;
+  }
+ 
+  .fotoForm {
+    width: 120px;
+    height: 120px;
+  }
+ 
+  .form_inferior {
+    grid-template-columns: 1fr;
+  }
+ 
+  .form_inferior .button {
+    justify-self: stretch;
+  }
+}
