@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeria's Garden</title>
+    <link rel="stylesheet" href="../activos/css/style.css">
+</head>
+
+<body>
+    <header>
+
+        <!--Navbar-->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../activos/imagenes/Navbar/logo.png" alt="Valeria's Garden" class="nav_icon">
+            </div>
+
+            <ul class="nav_centro">
+                <li><a href="Publicaciones.html" title="Home">
+                        <img src="../activos/imagenes/Navbar/inicio.png" alt="Home" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="Crear_publicacion.html" title="Crear">
+                        <img src="../activos/imagenes/Navbar/crear.png" alt="Crear" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="Buscar.html" title="Buscar">
+                        <img src="../activos/imagenes/Navbar/buscar.png" alt="Buscar" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="../index.html" title="Home">Acerca de</li>
+            </ul>
+
+            <div class="perfil">
+                <a href="Perfil_usuario.html" title="Perfil">
+                    <img src="../activos/imagenes/Navbar/perfil.png" alt="Foto de perfil" class="nav_icon">
+                </a>
+            </div>
+        </nav>
+
+    </header>
+
+    <br>
+
+    <main>
+
+         <!--Publicación 1-->
+        <section id="publicaciones">
+
+        <article class="publicacion" data-categoria="interior">
+
+            <!-- Lado izquierdo -->
+            <div class="publicacion_principal">
+
+                <header class="publicacion_autor">
+                    <img src="../activos/imagenes/Publicaciones/perfil1.jpeg" alt="Foto de perfil" class="autor_foto">
+                    <div>
+                        <strong class="autor_nombre">LB</strong>
+                        <time class="publicacion_fecha" datetime="2026-11-17">23 de marzo de 2026</time>
+                    </div>
+                    <span class="publicacion_categoria">Flores</span>
+                </header>
+
+                <img src="../activos/imagenes/Publicaciones/Tulipanes.jpeg" alt="Descripción de la foto" class="publicacion_imagen">
+
+                
+                <!-- Likes y Descripción -->
+                <div class="publicacion_info">
+                    <button type="button" class="btn_like" name="Me gusta" aria-label="Me gusta">
+                        ♥ <span class="likes_cantidad">6</span>
+                    </button>
+                    <p class="publicacion_descripcion">
+                        <strong>LB</strong>
+                        ¡Miren lo que me acabo de encontrar!
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Comentarios a la derecha -->
+            <aside class="publicacion_comentarios">
+                <h2>Comentarios</h2>
+
+                <ul class="lista_comentarios">
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil6.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Cristopher</strong>
+                            <p>¡Qué hermoso!</p>
+                        </div>
+                    </li>
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil2.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Gateto</strong>
+                            <p>Hermoso color...</p>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form_comentario">
+                    <input type="text" name="comentario" placeholder="Escribe un comentario..." aria-label="Escribe un comentario" required>
+                    <button type="submit" class="button">Enviar</button>
+                </form>
+
+            </aside>
+
+        </article>
+    
+    
+        <!-- Publicación 2 -->
+        <article class="publicacion" data-categoria="interior">
+
+            <!-- Lado izquierdo -->
+            <div class="publicacion_principal">
+
+                <header class="publicacion_autor">
+                    <img src="../activos/imagenes/Publicaciones/perfil7.jpeg" alt="Foto de perfil" class="autor_foto">
+                    <div>
+                        <strong class="autor_nombre">Brisa</strong>
+                        <time class="publicacion_fecha" datetime="2026-11-17">9 de abril de 2026</time>
+                    </div>
+                    <span class="publicacion_categoria">Flores</span>
+                </header>
+
+                <img src="../activos/imagenes/Publicaciones/Rosa.jpeg" alt="Descripción de la foto" class="publicacion_imagen">
+
+                
+                <!-- Likes y Descripción -->
+                <div class="publicacion_info">
+                    <button type="button" class="btn_like" name="Me gusta" aria-label="Me gusta">
+                        ♥ <span class="likes_cantidad">6</span>
+                    </button>
+                    <p class="publicacion_descripcion">
+                        <strong>Brisa</strong>
+                        ¿Verdad que está bonita mi rosa? Es una rosa traida desde Egypto. 
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Comentarios a la derecha -->
+            <aside class="publicacion_comentarios">
+                <h2>Comentarios</h2>
+
+                <ul class="lista_comentarios">
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil1.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>LB</strong>
+                            <p>Ajá Egypto.</p>
+                        </div>
+                    </li>
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil7.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Brisa</strong>
+                            <p>Sí LB, de Egypto.</p>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form_comentario">
+                    <input type="text" name="comentario" placeholder="Escribe un comentario..." aria-label="Escribe un comentario" required>
+                    <button type="submit" class="button">Enviar</button>
+                </form>
+
+            </aside>
+
+        </article>
+    
+
+        <!-- Publicación 3 -->
+        <article class="publicacion" data-categoria="interior">
+
+            <!-- Lado izquierdo -->
+            <div class="publicacion_principal">
+
+                <header class="publicacion_autor">
+                    <img src="../activos/imagenes/Publicaciones/perfil3.jpeg" alt="Foto de perfil" class="autor_foto">
+                    <div>
+                        <strong class="autor_nombre">Bella</strong>
+                        <time class="publicacion_fecha" datetime="2026-11-17">30 de septiembre de 2026</time>
+                    </div>
+                    <span class="publicacion_categoria">Suculentas y cactus</span>
+                </header>
+
+                <img src="../activos/imagenes/Publicaciones/Suculentas.jpeg" alt="Descripción de la foto" class="publicacion_imagen">
+
+                
+                <!-- Likes y Descripción -->
+                <div class="publicacion_info">
+                    <button type="button" class="btn_like" name="Me gusta" aria-label="Me gusta">
+                        ♥ <span class="likes_cantidad">6</span>
+                    </button>
+                    <p class="publicacion_descripcion">
+                        <strong>Bella</strong>
+                        Mis suculentas están muy coloridas jeje
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Comentarios a la derecha -->
+            <aside class="publicacion_comentarios">
+                <h2>Comentarios</h2>
+
+                <ul class="lista_comentarios">
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil5.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Luis</strong>
+                            <p>¡Qué hermosa quedó!</p>
+                        </div>
+                    </li>
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil4.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>María</strong>
+                            <p>¿Cada cuánto la riegas?</p>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form_comentario">
+                    <input type="text" name="comentario" placeholder="Escribe un comentario..." aria-label="Escribe un comentario" required>
+                    <button type="submit" class="button">Enviar</button>
+                </form>
+
+            </aside>
+
+        </article>
+    
+
+        <!-- Publicación 4 -->
+        <article class="publicacion" data-categoria="interior">
+
+            <!-- Lado izquierdo -->
+            <div class="publicacion_principal">
+
+                <header class="publicacion_autor">
+                    <img src="../activos/imagenes/Publicaciones/perfil2.jpeg" alt="Foto de perfil" class="autor_foto">
+                    <div>
+                        <strong class="autor_nombre">Gateto</strong>
+                        <time class="publicacion_fecha" datetime="2026-11-17">9 de noviembre de 2026</time>
+                    </div>
+                    <span class="publicacion_categoria">Orquídeas</span>
+                </header>
+
+                <img src="../activos/imagenes/Publicaciones/Guaria.jpeg" alt="Descripción de la foto" class="publicacion_imagen">
+
+                
+                <!-- Likes y Descripción -->
+                <div class="publicacion_info">
+                    <button type="button" class="btn_like" name="Me gusta" aria-label="Me gusta">
+                        ♥ <span class="likes_cantidad">6</span>
+                    </button>
+                    <p class="publicacion_descripcion">
+                        <strong>Gateto</strong>
+                        ¡Gracias por los consejos de riego!
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Comentarios a la derecha -->
+            <aside class="publicacion_comentarios">
+                <h2>Comentarios</h2>
+
+                <ul class="lista_comentarios">
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil6.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Cristopher</strong>
+                            <p>¡De nada!</p>
+                        </div>
+                    </li>
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil4.jpeg" alt="Foto de perfil de María" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>María</strong>
+                            <p>Faaaaah</p>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form_comentario">
+                    <input type="text" name="comentario" placeholder="Escribe un comentario..." aria-label="Escribe un comentario" required>
+                    <button type="submit" class="button">Enviar</button>
+                </form>
+
+            </aside>
+
+        </article>
+
+        <!-- Publicación 5 -->
+        <article class="publicacion" data-categoria="interior">
+
+            <!-- Lado izquierdo -->
+            <div class="publicacion_principal">
+
+                <header class="publicacion_autor">
+                    <img src="../activos/imagenes/Navbar/perfil.png" alt="Foto de perfil" class="autor_foto">
+                    <div>
+                        <strong class="autor_nombre">Aranza</strong>
+                        <time class="publicacion_fecha" datetime="2026-11-17">17 de noviembre de 2026</time>
+                    </div>
+                    <span class="publicacion_categoria">Flores</span>
+                </header>
+
+                <img src="../activos/imagenes/Publicaciones/Lirio.jpeg" alt="Descripción de la foto" class="publicacion_imagen">
+
+                
+                <!-- Likes y Descripción -->
+                <div class="publicacion_info">
+                    <button type="button" class="btn_like" name="Me gusta" aria-label="Me gusta">
+                        ♥ <span class="likes_cantidad">6</span>
+                    </button>
+                    <p class="publicacion_descripcion">
+                        <strong>Aranza</strong>
+                        Hermoso regalo.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Comentarios a la derecha -->
+            <aside class="publicacion_comentarios">
+                <h2>Comentarios</h2>
+
+                <ul class="lista_comentarios">
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil1.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>LB</strong>
+                            <p>No</p>
+                        </div>
+                    </li>
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil7.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Brisa</strong>
+                            <p>Callado LB, no me moleste a la chikita.</p>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form_comentario">
+                    <input type="text" name="comentario" placeholder="Escribe un comentario..." aria-label="Escribe un comentario" required>
+                    <button type="submit" class="button">Enviar</button>
+                </form>
+
+            </aside>
+
+        </article>
+   
+
+        <!-- Publicación 6 -->
+        <article class="publicacion" data-categoria="interior">
+
+            <!-- Lado izquierdo -->
+            <div class="publicacion_principal">
+
+                <header class="publicacion_autor">
+                    <img src="../activos/imagenes/Publicaciones/perfil6.jpeg" alt="Foto de perfil" class="autor_foto">
+                    <div>
+                        <strong class="autor_nombre">Cristopher</strong>
+                        <time class="publicacion_fecha" datetime="2026-11-17">20 de noviembre de 2026</time>
+                    </div>
+                    <span class="publicacion_categoria">Plantas de interior</span>
+                </header>
+
+                <img src="../activos/imagenes/Publicaciones/Flor_morada.jpeg" alt="Descripción de la foto" class="publicacion_imagen">
+
+                
+                <!-- Likes y Descripción -->
+                <div class="publicacion_info">
+                    <button type="button" class="btn_like" name="Me gusta" aria-label="Me gusta">
+                        ♥ <span class="likes_cantidad">6</span>
+                    </button>
+                    <p class="publicacion_descripcion">
+                        <strong>Cristopher</strong>
+                        Creo que alguien tiene muy linda foto de perfil sjjssjjs.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Comentarios a la derecha -->
+            <aside class="publicacion_comentarios">
+                <h2>Comentarios</h2>
+
+                <ul class="lista_comentarios">
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/perfil7.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Luis</strong>
+                            <p>¡Qué hermosa es!</p>
+                        </div>
+                    </li>
+                    <li class="comentario">
+                        <img src="../activos/imagenes/Publicaciones/Flor_morada.jpeg" alt="Foto de perfil" class="comentario_foto">
+                        <div class="comentario_texto">
+                            <strong>Aranza</strong>
+                            <p>Ay AJAJJAJAJ</p>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form_comentario">
+                    <input type="text" name="comentario" placeholder="Escribe un comentario..." aria-label="Escribe un comentario" required>
+                    <button type="submit" class="button">Enviar</button>
+                </form>
+
+            </aside>
+
+        </article>
+
+    </main>
+
+    <script src="../activos/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeria's Garden</title>
+    <link rel="stylesheet" href="../activos/css/style.css">
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../activos/imagenes/Navbar/logo.png" alt="Valeria's Garden" class="nav_icon">
+            </div>
+
+            <ul class="nav_centro">
+                <li><a href="Publicaciones.html" title="Home">
+                        <img src="../activos/imagenes/Navbar/inicio.png" alt="Home" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="Crear_publicacion.html" title="Crear">
+                        <img src="../activos/imagenes/Navbar/crear.png" alt="Crear" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="Buscar.html" title="Buscar">
+                        <img src="../activos/imagenes/Navbar/buscar.png" alt="Buscar" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="../index.html" title="Home">Acerca de</li>
+            </ul>
+            </ul>
+
+            <div class="perfil">
+                <a href="Perfil_usuario.html" title="Perfil">
+                    <img src="../activos/imagenes/Navbar/perfil.png" alt="Foto de perfil" class="nav_icon">
+                </a>
+            </div>
+        </nav>
+
+    </header>
+ 
+    <!-- Parte Principal -->
+    <main>
+ 
+    <!-- Formulario de inicio de sesión -->
+    <section class="Caja1_form">
+        <div class="Datos_personales">
+ 
+            <h2>¡Foto de perfil!</h2>
+ 
+            <form class="form1" action="../paginas/Publicaciones.html">
+ 
+                <!-- Parte de arriba. Foto de perfil, nombre de usuario y correo-->
+                <div class="form_superior">
+ 
+                    <img src="../activos/imagenes/Navbar/perfil.png" alt="Foto de perfil" class="fotoForm">
+ 
+                    <div class="form_datos">
+ 
+                        <div class="campo">
+                            <label for="nombre">¿Cómo quiere que lo conozcan?:</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Nombre de usuario" required>
+                        </div>
+ 
+                        <div class="campo">
+                            <label for="correo">¿Qué correo desea usar?:</label>
+                            <input type="email" id="correo" name="correo" placeholder="correo@gmail.com" required>
+                        </div>
+ 
+                    </div>
+                </div>
+ 
+                <!-- Parte de abajo. Información personal -->
+                <div class="form_inferior">
+ 
+                    <div class="campo">
+                        <label for="pais">¿Cuál es su país de origen?:</label>
+                        <select id="pais" name="pais" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="costaRica">Costa Rica</option>
+                            <option value="belice">Belice</option>
+                            <option value="elSalvador">El Salvador</option>
+                            <option value="guatemala">Guatemala</option>
+                            <option value="honduras">Honduras</option>
+                            <option value="nicaragua">Nicaragua</option>
+                            <option value="panama">Panamá</option>
+                        </select>
+                    </div>
+ 
+                    <div class="campo">
+                        <label for="provincia">¿En qué provincia vive?:</label>
+                        <select id="provincia" name="provincia" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="sanJose">San José</option>
+                            <option value="alajuela">Alajuela</option>
+                            <option value="cartago">Cartago</option>
+                            <option value="heredia">Heredia</option>
+                            <option value="puntarenas">Puntarenas</option>
+                            <option value="limon">Limón</option>
+                            <option value="guanacaste">Guanacaste</option>
+                            <option value="noValido">No válido</option>
+                        </select>
+                    </div>
+ 
+                    <div class="campo campo_ancho">
+                        <label for="descripcion">¿Cómo quiere presentarse?</label>
+                        <textarea id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
+                    </div>
+ 
+                    <button type="submit" class="button">Registrarse</button>
+ 
+                </div>
+ 
+            </form>
+ 
+        </div>
+    </section>
+ 
+    </main>
+
+    <script src="../activos/js/script.js"></script>
+
+</body>
+</html>

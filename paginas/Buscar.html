@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeria's Garden</title>
+    <link rel="stylesheet" href="../activos/css/style.css">
+</head>
+
+<body class="body_buscar">
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../activos/imagenes/Navbar/logo.png" alt="Valeria's Garden" class="nav_icon">
+            </div>
+
+            <ul class="nav_centro">
+                <li><a href="Publicaciones.html" title="Home">
+                        <img src="../activos/imagenes/Navbar/inicio.png" alt="Home" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="Crear_publicacion.html" title="Crear">
+                        <img src="../activos/imagenes/Navbar/crear.png" alt="Crear" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="Buscar.html" title="Buscar">
+                        <img src="../activos/imagenes/Navbar/buscar.png" alt="Buscar" class="nav_icon">
+                    </a>
+                </li>
+                <li><a href="../index.html" title="Home">Acerca de</li>
+            </ul>
+            </ul>
+
+            <div class="perfil">
+                <a href="Perfil_usuario.html" title="Perfil">
+                    <img src="../activos/imagenes/Navbar/perfil.png" alt="Foto de perfil" class="nav_icon">
+                </a>
+            </div>
+        </nav>
+
+    </header>
+
+    
+
+<main>
+    <!-- Barra de busqueda -->
+    <section id="busqueda">
+
+    <form class="busqueda" role="search" action="#">
+        <label for="buscar" class="oculto_visual">Buscar publicaciones</label>
+
+        <div class="barra_busqueda">
+            <svg class="barra_icono" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+            <input type="search" id="buscar" name="buscar" placeholder="Busque por título, descripción o autor...">
+        </div>
+    </form>
+
+    <!-- Categorías de busqueda -->
+    <div class="categorias" role="group" aria-label="Filtrar por categoría">
+        <button type="button" class="categoria_btn activo" data-categoria="todas" aria-pressed="true">Todas</button>
+        <button type="button" class="categoria_btn" data-categoria="interior" aria-pressed="false">Plantas de interior</button>
+        <button type="button" class="categoria_btn" data-categoria="suculentas" aria-pressed="false">Suculentas y cactus</button>
+        <button type="button" class="categoria_btn" data-categoria="flores" aria-pressed="false">Flores</button>
+        <button type="button" class="categoria_btn" data-categoria="hierbas" aria-pressed="false">Hierbas y aromáticas</button>
+        <button type="button" class="categoria_btn" data-categoria="orquideas" aria-pressed="false">Orquídeas</button>
+        <button type="button" class="categoria_btn" data-categoria="arbustos" aria-pressed="false">Árboles y arbustos</button>
+        <button type="button" class="categoria_btn" data-categoria="frutales" aria-pressed="false">Frutales</button>
+        <button type="button" class="categoria_btn" data-categoria="otras" aria-pressed="false">Otras</button>
+    </div>
+
+    <p class="busqueda_resultado" aria-live="polite"></p>
+
+</section>
+
+</main>
+
+    <script src="../activos/js/script.js"></script>
+</body>
+</html>
