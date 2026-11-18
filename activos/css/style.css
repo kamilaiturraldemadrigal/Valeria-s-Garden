@@ -5,177 +5,6 @@ body{
     margin: 0;
 }
 
-/* CSS de la navbar */
-
-.navbar {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 36px;
-    background-color: aqua;
-    padding: 0.8rem 0.8rem;
-    margin: 0rem;
-    color: white;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: white;
-    font-size: 2rem;
-    transition: color 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-}
-
-.nav_icon {
-    width: 54px;
-    height: 54px;
-}
-
-.logo, .perfil {
-    font-size: 1.5rem;
-    font-weight: bold;
-    flex: 1;
-}
-
-.perfil {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.nav_centro {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar a:hover {
-    transform: scale(1.15);
-}
-
-
-/* CSS ÚNICO para index.html */
-
-.quienes_somos, .inicios, .terminos_condiciones {
-    background-color: brown;
-}
-
-.creador, .como_funciona {
-    background-color: burlywood;
-}
-
- .titulo {
-    font-size: 35px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
- }
-
-.img_izquierda {
-    display: flex;  
-    float: left;
-    width: 350px;          
-    height: 350px;          
-    border-radius: 12px;
-    margin: 35px;
-}
-
-.img_derecha {
-    display: flex;  
-    float:right;
-    width: 350px;          
-    height: 350px;          
-    border-radius: 12px;
-    margin: 35px;
-}
-
-.texto_derecha, .texto_izquierda {
-    justify-content: center;
-    text-align:justify;
-    padding: 20px;
-    margin: 40px;
-    flex: 1;
-}
-
-.main {
-    background-color: beige;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between; /* Separa las 3 columnas equitativamente */
-    align-items: flex-start;        /* Alinea todo desde arriba */
-    flex-wrap: wrap;                /* Permite que baje en celulares */
-    gap: 30px;
-    background-color: #112233;      /* Fondo oscuro elegante (puedes cambiarlo) */
-    color: #ffffff;                 /* Texto blanco para buen contraste */
-    padding: 30px 50px;             /* Altura equilibrada y margen interno */
-    font-family: Arial, sans-serif;
-}
-
-.logo_footer {
-    width: 50px;
-    height: 50px;
-}
-
-.contactos h2 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 1.2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    justify-content: center;
-}
-
-.contactos p {
-    margin: 6px 0;
-    font-size: 0.95rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.links {
-   display: flex;
-    flex-direction: column;         /* Pone los enlaces uno debajo del otro */
-    gap: 1px;
-}
-
-.links a:hover {
-    text-decoration: underline;     /* Subraya solo al pasar el mouse */
-    color: #00e5ff;
-}
-
-/*CSS inicio de sesion*/
-
-.Caja1_form {
-    margin: 34px;
-    box-sizing: border-box;
-    background-color: beige;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-    padding: 30px;
-    border: 2px solid black;
-    border-radius: 8px;
-    overflow-wrap: break-word;
-    overflow: auto;
-    flex: 1;
-}
- 
-.fotoForm {
-    display: flex;
-    justify-content: flex-start;
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-}
- 
-.form1 {
-    justify-content: flex-start;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-
-
 /* CSS para publicaciones */
 
 
@@ -572,5 +401,294 @@ body{
 
   .categoria_btn {
     flex-shrink: 0;
+  }
+}
+
+
+/* CSS para perfil de usuario */
+ 
+#perfil_usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(2rem, 3.5vw, 3rem) clamp(0.6rem, 3vw, 2rem);
+}
+ 
+/* Estilo común de las dos tarjetas */
+.perfil_tarjeta {
+  width: 100%;
+  max-width: 740px;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+  background: #C0AA8A;
+  border: 3px solid #371E13;
+  border-radius: 6px;
+}
+ 
+/* ---------- Tarjeta 1: foto y nombre ---------- */
+.perfil_cabecera {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(1rem, 3.5vw, 1.8rem);
+  box-shadow: 10px 10px 0 #A85530;
+}
+ 
+.perfil_foto {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  background: #E1D3A9;
+  border: 3px solid #371E13;
+  border-radius: 50%;
+}
+ 
+.perfil_nombre {
+  margin: 0;
+  font-size: clamp(1.7rem, 4.2vw, 2.5rem);
+  overflow-wrap: anywhere;
+}
+ 
+/* Sin la línea decorativa debajo del nombre */
+.perfil_nombre::after {
+  display: none;
+}
+ 
+.perfil_subtitulo {
+  margin: 0.2rem 0 0;
+  font-size: 1.1rem;
+  color: #734F31;
+}
+ 
+/* Botón "Cambiar foto" (solo visible al editar) */
+.perfil_cambiar_foto {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5E2A25;
+  background: transparent;
+  border: 2px solid #5E2A25;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+ 
+.perfil_cambiar_foto:hover {
+  color: #E1D3A9;
+  background: #5E2A25;
+}
+ 
+.perfil_cambiar_foto:focus-within {
+  outline: 3px solid #A85530;
+  outline-offset: 3px;
+}
+ 
+.perfil_cambiar_foto input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+ 
+/* Necesario: estas reglas con display anularían el atributo hidden */
+.perfil_cambiar_foto[hidden],
+.btn_editar[hidden],
+.perfil_acciones[hidden] {
+  display: none;
+}
+ 
+/* ---------- Tarjeta 2: información personal ---------- */
+.perfil_datos {
+  box-shadow: 10px 10px 0 #534B31;
+}
+ 
+.perfil_datos_encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+}
+ 
+.perfil_datos_encabezado h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+}
+ 
+/* Botón "Editar datos" y "Cancelar" */
+.btn_editar,
+.btn_secundario {
+  padding: 0.5rem 1.4rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #5E2A25;
+  background: transparent;
+  border: 2px solid #5E2A25;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+ 
+.btn_editar:hover,
+.btn_secundario:hover {
+  color: #E1D3A9;
+  background: #5E2A25;
+}
+ 
+.btn_editar:focus-visible,
+.btn_secundario:focus-visible {
+  outline: 3px solid #A85530;
+  outline-offset: 3px;
+}
+ 
+/* ---------- Campos ---------- */
+.perfil_campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1.5rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+ 
+.perfil_campos .campo_ancho {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+ 
+.perfil_campos label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #371E13;
+}
+ 
+.perfil_campos input,
+.perfil_campos select,
+.perfil_campos textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.65rem 0.9rem;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #371E13;
+  background: #E1D3A9;
+  border: 2px solid #734F31;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+ 
+.perfil_campos select {
+  cursor: pointer;
+}
+ 
+.perfil_campos textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+ 
+.perfil_campos input:hover,
+.perfil_campos select:hover,
+.perfil_campos textarea:hover {
+  border-color: #5E2A25;
+}
+ 
+.perfil_campos input:focus,
+.perfil_campos select:focus,
+.perfil_campos textarea:focus {
+  outline: none;
+  border-color: #A85530;
+  box-shadow: 0 0 0 3px rgba(168, 85, 48, 0.3);
+}
+ 
+/* Modo lectura: los campos se ven como texto, no como cajas editables */
+.perfil_campos:disabled input,
+.perfil_campos:disabled select,
+.perfil_campos:disabled textarea {
+  color: #371E13;
+  -webkit-text-fill-color: #371E13;
+  opacity: 1;
+  background: rgba(225, 211, 169, 0.45);
+  border-color: transparent;
+  cursor: default;
+  -webkit-appearance: none;
+  appearance: none;
+  resize: none;
+  field-sizing: content;
+}
+ 
+/* ---------- Botones de guardar y cancelar ---------- */
+.perfil_acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+ 
+.perfil_acciones .button {
+  margin-top: 0;
+  padding: 0.55rem 1.8rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #E1D3A9;
+  background: #5E2A25;
+  border: 2px solid #5E2A25;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+ 
+.perfil_acciones .button:hover {
+  background: #A85530;
+  border-color: #A85530;
+}
+ 
+/* Mensaje "Cambios guardados" */
+.perfil_mensaje {
+  margin: 1rem 0 0;
+  font-weight: 600;
+  color: #534B31;
+}
+ 
+.perfil_mensaje:empty {
+  display: none;
+}
+ 
+/* ---------- Móvil ---------- */
+@media (max-width: 600px) {
+  .perfil_cabecera {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    box-shadow: 8px 8px 0 #A85530;
+  }
+ 
+  .perfil_datos {
+    box-shadow: 8px 8px 0 #534B31;
+  }
+ 
+  .perfil_campos {
+    grid-template-columns: 1fr;
+  }
+ 
+  .perfil_acciones {
+    flex-direction: column-reverse;
+  }
+ 
+  .perfil_acciones .button,
+  .btn_secundario {
+    width: 100%;
   }
 }
