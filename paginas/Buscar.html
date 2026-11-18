@@ -39,7 +39,42 @@
 
     </header>
 
-    <script src="../activos/js/script.js"></script>
+    
 
+<main>
+
+    <section id="busqueda">
+
+    <form class="busqueda" role="search" action="#">
+        <label for="buscar" class="oculto_visual">Buscar publicaciones</label>
+
+        <div class="barra_busqueda">
+            <svg class="barra_icono" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+            <input type="search" id="buscar" name="buscar" placeholder="Busque por título, descripción o autor...">
+        </div>
+    </form>
+
+    <div class="categorias" role="group" aria-label="Filtrar por categoría">
+        <button type="button" class="categoria_btn activo" data-categoria="todas" aria-pressed="true">Todas</button>
+        <button type="button" class="categoria_btn" data-categoria="interior" aria-pressed="false">Plantas de interior</button>
+        <button type="button" class="categoria_btn" data-categoria="suculentas" aria-pressed="false">Suculentas y cactus</button>
+        <button type="button" class="categoria_btn" data-categoria="flores" aria-pressed="false">Flores</button>
+        <button type="button" class="categoria_btn" data-categoria="hierbas" aria-pressed="false">Hierbas y aromáticas</button>
+        <button type="button" class="categoria_btn" data-categoria="orquideas" aria-pressed="false">Orquídeas</button>
+        <button type="button" class="categoria_btn" data-categoria="arbustos" aria-pressed="false">Árboles y arbustos</button>
+        <button type="button" class="categoria_btn" data-categoria="frutales" aria-pressed="false">Frutales</button>
+        <button type="button" class="categoria_btn" data-categoria="otras" aria-pressed="false">Otras</button>
+    </div>
+
+    <p class="busqueda_resultado" aria-live="polite"></p>
+
+</section>
+
+</main>
+
+    <script src="../activos/js/script.js"></script>
 </body>
 </html>
