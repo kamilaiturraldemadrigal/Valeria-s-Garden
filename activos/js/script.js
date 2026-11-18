@@ -1,7 +1,3 @@
-/* =====================================================
-   VALERIA'S GARDEN · script.js
-   ===================================================== */
-
 const CLAVE_PUBLICACIONES = "valerias_garden_publicaciones";
 const CLAVE_PERFIL = "valerias_garden_perfil";
 const FOTO_PERFIL_DEFECTO = "../activos/imagenes/Navbar/perfil.png";
@@ -27,9 +23,7 @@ const FILTROS_CSS = {
 };
 
 
-/* =====================================================
-   UTILIDADES
-   ===================================================== */
+/* Usos, utilidades */
 
 function escaparHTML(texto) {
   return String(texto).replace(/[&<>"']/g, function (c) {
@@ -72,7 +66,6 @@ function nombreUsuario() {
   return (perfil && perfil.datos && perfil.datos.nombre) || "Usuario";
 }
 
-// La foto de perfil solo se muestra para el usuario actual
 function fotoDe(autor) {
   const perfil = leerPerfil();
   if (perfil && perfil.foto && autor === nombreUsuario()) return perfil.foto;
@@ -89,10 +82,7 @@ function actualizarPublicacion(id, cambiar) {
 }
 
 
-/* =====================================================
-   MOSTRAR PUBLICACIONES GUARDADAS
-   (páginas de Publicaciones y Buscar)
-   ===================================================== */
+/* páginas de publicaciones y buscar. Páginas guardadas */
 
 function crearComentario(comentario) {
   return `
@@ -106,6 +96,7 @@ function crearComentario(comentario) {
 }
 
 function crearTarjeta(pub) {
+    const esMia = pub.autor === nombreUsuario(); 
   const fecha = new Date(pub.fecha).toLocaleDateString("es-CR", {
     day: "numeric", month: "long", year: "numeric"
   });
@@ -128,9 +119,12 @@ function crearTarjeta(pub) {
         <img src="${escaparHTML(pub.foto)}" alt="${escaparHTML(pub.titulo)}" class="publicacion_imagen" style="filter: ${filtro}">
 
         <div class="publicacion_info">
-          <button type="button" class="btn_like${pub.meGusta ? " activo" : ""}" aria-label="Me gusta" aria-pressed="${pub.meGusta ? "true" : "false"}">
-            ♥ <span class="likes_cantidad">${pub.likes || 0}</span>
-          </button>
+            <div class="publicacion_acciones">
+                <button type="button" class="btn_like${pub.meGusta ? " activo" : ""}" aria-label="Me gusta" aria-pressed="${pub.meGusta ? "true" : "false"}">
+                ♥ <span class="likes_cantidad">${pub.likes || 0}</span>
+                </button>
+                ${esMia ? '<button type="button" class="btn_borrar">Eliminar</button>' : ""}
+            </div>
           <h3 class="publicacion_titulo">${escaparHTML(pub.titulo)}</h3>
           <p class="publicacion_descripcion">
             <strong>${escaparHTML(pub.autor)}</strong>
@@ -155,7 +149,7 @@ function mostrarPublicacionesGuardadas() {
   let contenedor = document.getElementById("publicaciones");
   const busqueda = document.querySelector(".busqueda");
 
-  // Si la página de búsqueda no tiene dónde mostrarlas, crea el espacio
+
   if (!contenedor && busqueda) {
     contenedor = document.createElement("section");
     contenedor.id = "publicaciones";
@@ -178,9 +172,7 @@ function mostrarPublicacionesGuardadas() {
 mostrarPublicacionesGuardadas();
 
 
-/* =====================================================
-   ME GUSTA
-   ===================================================== */
+/* Los me gusta */
 
 document.addEventListener("click", function (evento) {
   const boton = evento.target.closest(".btn_like");
@@ -203,10 +195,31 @@ document.addEventListener("click", function (evento) {
   });
 });
 
+/* Eliminar publicación */
 
-/* =====================================================
-   COMENTARIOS
-   ===================================================== */
+document.addEventListener("click", function (evento) {
+  const boton = evento.target.closest(".btn_borrar");
+  if (!boton) return;
+
+  const tarjeta = boton.closest(".publicacion");
+  if (!tarjeta || !tarjeta.dataset.id) return;
+
+  if (!confirm("¿Desea eliminar esta publicación? Esta acción no se puede deshacer.")) return;
+
+  const lista = leerPublicaciones().filter(function (p) {
+    return p.id !== tarjeta.dataset.id;
+  });
+
+  if (!guardarPublicaciones(lista)) return;
+
+  tarjeta.remove();
+
+  // Avisa a la búsqueda para que actualice el mensaje de "sin resultados"
+  document.dispatchEvent(new Event("publicaciones:cambio"));
+});
+
+
+/* Los comentarios */
 
 document.addEventListener("submit", function (evento) {
   const formulario = evento.target.closest(".form_comentario");
@@ -235,9 +248,7 @@ document.addEventListener("submit", function (evento) {
 });
 
 
-/* =====================================================
-   BÚSQUEDA Y CATEGORÍAS
-   ===================================================== */
+/* Parte de la barra de busqueda y los botones de categorías */
 
 const buscador = document.getElementById("buscar");
 
@@ -255,7 +266,6 @@ if (buscador) {
       const coincideCategoria =
         categoriaActiva === "todas" || tarjeta.dataset.categoria === categoriaActiva;
 
-      // Busca en autor, fecha, categoría, título y descripción (no en comentarios)
       const contenido = normalizar(
         tarjeta.querySelector(".publicacion_principal").textContent
       );
@@ -282,6 +292,7 @@ if (buscador) {
 
   document.querySelector(".busqueda").addEventListener("submit", function (evento) {
     evento.preventDefault();
+    document.addEventListener("publicaciones:cambio", filtrar);
   });
 
   botones.forEach(function (boton) {
@@ -302,9 +313,7 @@ if (buscador) {
 }
 
 
-/* =====================================================
-   CREAR PUBLICACIÓN
-   ===================================================== */
+/* Crear publicación */
 
 const formCrear = document.querySelector(".crear_publicacion");
 
@@ -338,7 +347,6 @@ if (formCrear) {
     }
   }
 
-  // Reduce la foto para que quepa en la memoria del navegador
   function comprimirImagen(archivo) {
     return new Promise(function (resolver, rechazar) {
       const lector = new FileReader();
@@ -370,7 +378,6 @@ if (formCrear) {
     });
   }
 
-  // Vista previa de la foto elegida (los filtros se ven sobre ella)
   inputFoto.addEventListener("change", function () {
     const archivo = inputFoto.files[0];
 
@@ -392,9 +399,12 @@ if (formCrear) {
     vista.hidden = false;
   });
 
-  // Al publicar: guarda la publicación para que aparezca en Publicaciones y Buscar
+
+  /* Guarda la publicación */
   formCrear.addEventListener("submit", async function (evento) {
     evento.preventDefault();
+  
+
 
     const archivo = inputFoto.files[0];
     if (!archivo) {
@@ -439,9 +449,9 @@ if (formCrear) {
 }
 
 
-/* =====================================================
-   PERFIL DE USUARIO
-   ===================================================== */
+
+
+/* JS para el perfil de usuario */
 
 const formPerfil = document.getElementById("form_perfil");
 

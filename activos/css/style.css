@@ -383,6 +383,38 @@ main section:nth-child(even) .img_izquierda, main section:nth-child(even) .img_d
   gap: 0.7rem;
 }
 
+/* Fila con me gusta y eliminar */
+.publicacion_acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.btn_borrar {
+  padding: 0.3rem 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #5E2A25;
+  background: transparent;
+  border: 2px solid #5E2A25;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn_borrar:hover {
+  color: #EEE8D8;
+  background: #5E2A25;
+}
+
+.btn_borrar:focus-visible {
+  outline: 3px solid #2F4A3C;
+  outline-offset: 3px;
+}
+
 /* Me gusta */
 
 .btn_like {
