@@ -321,6 +321,14 @@ if (formCrear) {
   const inputFoto = document.getElementById("foto");
   const vista = formCrear.querySelector(".vista_imagen");
   let urlActual = null;
+  const campoUsuario = formCrear.elements.usuario;
+
+  function rellenarUsuario() {
+    const nombre = nombreUsuario();
+    campoUsuario.value = nombre === "Usuario" ? "" : nombre;
+  }
+
+  rellenarUsuario();
 
   function ocultarVista() {
     if (urlActual) URL.revokeObjectURL(urlActual);
@@ -329,7 +337,7 @@ if (formCrear) {
     vista.hidden = true;
   }
 
-  function mostrarAviso(texto, enlace) {
+  function mostrarAviso(texto, enlace, esError) {
     let aviso = formCrear.querySelector(".perfil_mensaje");
     if (!aviso) {
       aviso = document.createElement("p");
@@ -337,6 +345,8 @@ if (formCrear) {
       aviso.setAttribute("role", "status");
       formCrear.querySelector(".crear_datos").appendChild(aviso);
     }
+
+    aviso.classList.toggle("error", Boolean(esError));
     aviso.textContent = texto + " ";
 
     if (enlace) {
@@ -345,6 +355,33 @@ if (formCrear) {
       a.textContent = enlace.texto;
       aviso.appendChild(a);
     }
+  }
+
+  /* Revisa los datos antes de publicar */
+  function validarPublicacion(datos, archivo) {
+    const errores = [];
+
+    const usuario = (datos.get("usuario") || "").trim();
+    const titulo = (datos.get("titulo") || "").trim();
+    const descripcion = (datos.get("descripcion") || "").trim();
+
+    if (usuario.length < 2) {
+      errores.push("El nombre de usuario debe tener al menos 2 caracteres.");
+    }
+    if (titulo.length < 3) {
+      errores.push("El título debe tener al menos 3 caracteres.");
+    }
+    if (descripcion.length < 10) {
+      errores.push("La descripción debe tener al menos 10 caracteres.");
+    }
+    if (!datos.get("categoria")) {
+      errores.push("Seleccione una categoría.");
+    }
+    if (!archivo) {
+      errores.push("Elija una foto para su publicación.");
+    }
+
+    return errores;
   }
 
   function comprimirImagen(archivo) {
@@ -400,11 +437,58 @@ if (formCrear) {
   });
 
 
-  /* Guarda la publicación */
+  /* Publicar: Valida, guarda la publicación y avisa*/
+    
   formCrear.addEventListener("submit", async function (evento) {
     evento.preventDefault();
-  
 
+    const archivo = inputFoto.files[0];
+    const datos = new FormData(formCrear);
+
+    const errores = validarPublicacion(datos, archivo);
+    if (errores.length > 0) {
+      mostrarAviso(errores.join(" "), null, true);
+      return;
+    }
+
+    try {
+      
+      const foto = await comprimirImagen(archivo);
+
+      const nueva = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+        autor: datos.get("usuario").trim(),
+        propia: true, 
+        foto: foto,
+        titulo: datos.get("titulo").trim(),
+        descripcion: datos.get("descripcion").trim(),
+        categoria: datos.get("categoria"),
+        filtro: datos.get("filtro") || "normal",
+        fecha: new Date().toISOString(),
+        likes: 0,
+        meGusta: false,
+        comentarios: []
+      };
+
+      
+      const lista = leerPublicaciones();
+      lista.unshift(nueva); 
+
+      if (!guardarPublicaciones(lista)) {
+        mostrarAviso("No se pudo guardar: la memoria del navegador está llena. Pruebe con una foto más pequeña.", null, true);
+        return;
+      }
+
+      
+      formCrear.reset();
+      rellenarUsuario();
+      ocultarVista();
+      mostrarAviso("Publicación creada.", { href: "Publicaciones.html", texto: "Verla en publicaciones" });
+    } catch (error) {
+      mostrarAviso("No se pudo procesar la foto. Pruebe con otra imagen.", null, true);
+    }
+  });
+  
 
     const archivo = inputFoto.files[0];
     if (!archivo) {
@@ -432,7 +516,7 @@ if (formCrear) {
       };
 
       const lista = leerPublicaciones();
-      lista.unshift(nueva); // la más nueva primero
+      lista.unshift(nueva);
 
       if (!guardarPublicaciones(lista)) {
         mostrarAviso("No se pudo guardar: la memoria del navegador está llena. Pruebe con una foto más pequeña.");
