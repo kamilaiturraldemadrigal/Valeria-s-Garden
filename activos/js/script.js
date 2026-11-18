@@ -1,15 +1,11 @@
-/* =====================================================
-   VALERIA'S GARDEN · script.js
-   ===================================================== */
-
-/* ---------- DATOS GENERALES ---------- */
+/* Datos generales */
 
 // Claves con las que se guarda la información en el navegador
 const CLAVE_PUBLICACIONES = "valerias_garden_publicaciones";
 const CLAVE_PERFIL = "valerias_garden_perfil";
 const FOTO_PERFIL_DEFECTO = "../activos/imagenes/Navbar/perfil.png";
 
-// Categorías: el valor interno y el texto que se muestra
+
 const CATEGORIAS = {
   interior: "Plantas de interior",
   suculentas: "Suculentas y cactus",
@@ -32,9 +28,7 @@ const FILTROS_CSS = {
 };
 
 
-/* =====================================================
-   UTILIDADES
-   ===================================================== */
+/* Usos/utilidades */
 
 // Evita que un texto escrito por el usuario se interprete como código HTML
 function escaparHTML(texto) {
@@ -43,7 +37,6 @@ function escaparHTML(texto) {
   });
 }
 
-// Quita tildes y mayúsculas: "orquidea" encuentra "Orquídeas"
 function normalizar(texto) {
   return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -57,7 +50,6 @@ function leerPublicaciones() {
   }
 }
 
-// Guarda el arreglo de publicaciones. Devuelve false si no se pudo
 function guardarPublicaciones(lista) {
   try {
     localStorage.setItem(CLAVE_PUBLICACIONES, JSON.stringify(lista));
@@ -80,14 +72,12 @@ function nombreUsuario() {
   return (perfil && perfil.datos && perfil.datos.nombre) || "Usuario";
 }
 
-// La foto de perfil guardada solo se muestra para el usuario actual
 function fotoDe(autor) {
   const perfil = leerPerfil();
   if (perfil && perfil.foto && autor === nombreUsuario()) return perfil.foto;
   return FOTO_PERFIL_DEFECTO;
 }
 
-// Busca una publicación por id, la modifica y guarda el arreglo
 function actualizarPublicacion(id, cambiar) {
   if (!id) return; // las tarjetas escritas a mano en el HTML no se guardan
   const lista = leerPublicaciones();
@@ -98,12 +88,7 @@ function actualizarPublicacion(id, cambiar) {
 }
 
 
-/* =====================================================
-   MOSTRAR PUBLICACIONES GUARDADAS
-   (páginas de Publicaciones y Buscar)
-   ===================================================== */
-
-// Crea el HTML de un comentario
+/* Mostrar publicaciones guardadas */
 function crearComentario(comentario) {
   return `
     <li class="comentario">
@@ -115,7 +100,6 @@ function crearComentario(comentario) {
     </li>`;
 }
 
-// Crea el HTML de una publicación completa
 function crearTarjeta(pub) {
   const esMia = pub.propia || pub.autor === nombreUsuario();
   const fecha = new Date(pub.fecha).toLocaleDateString("es-CR", {
@@ -166,7 +150,6 @@ function crearTarjeta(pub) {
     </article>`;
 }
 
-// Recorre el arreglo y muestra cada publicación en la página
 function mostrarPublicacionesGuardadas() {
   let contenedor = document.getElementById("publicaciones");
   const busqueda = document.querySelector(".busqueda");
@@ -185,7 +168,7 @@ function mostrarPublicacionesGuardadas() {
   const plantilla = document.createElement("template");
   plantilla.innerHTML = lista.map(crearTarjeta).join("");
 
-  // Las más nuevas quedan debajo del título (si hay uno)
+  
   const titulo = contenedor.querySelector(":scope > h1");
   if (titulo) titulo.after(plantilla.content);
   else contenedor.prepend(plantilla.content);
@@ -194,10 +177,7 @@ function mostrarPublicacionesGuardadas() {
 mostrarPublicacionesGuardadas();
 
 
-/* =====================================================
-   ME GUSTA
-   ===================================================== */
-
+/* Los likes */
 document.addEventListener("click", function (evento) {
   const boton = evento.target.closest(".btn_like");
   if (!boton) return;
@@ -212,7 +192,6 @@ document.addEventListener("click", function (evento) {
   contador.textContent = nueva;
   boton.setAttribute("aria-pressed", activo);
 
-  // Guarda el nuevo número en el arreglo
   const tarjeta = boton.closest(".publicacion");
   actualizarPublicacion(tarjeta && tarjeta.dataset.id, function (p) {
     p.likes = nueva;
@@ -221,9 +200,7 @@ document.addEventListener("click", function (evento) {
 });
 
 
-/* =====================================================
-   ELIMINAR PUBLICACIÓN
-   ===================================================== */
+/* Eliminar publicacion */
 
 document.addEventListener("click", function (evento) {
   const boton = evento.target.closest(".btn_borrar");
@@ -234,29 +211,25 @@ document.addEventListener("click", function (evento) {
 
   if (!confirm("¿Desea eliminar esta publicación? Esta acción no se puede deshacer.")) return;
 
-  // Quita la publicación del arreglo y vuelve a guardarlo
   const lista = leerPublicaciones().filter(function (p) {
     return p.id !== tarjeta.dataset.id;
   });
 
   if (!guardarPublicaciones(lista)) return;
 
-  tarjeta.remove(); // la quita de la página
+  tarjeta.remove(); 
 
-  // Avisa a la búsqueda para que actualice el mensaje de "sin resultados"
   document.dispatchEvent(new Event("publicaciones:cambio"));
 });
 
 
-/* =====================================================
-   COMENTARIOS
-   ===================================================== */
+/* Los comentarios */
 
 document.addEventListener("submit", function (evento) {
   const formulario = evento.target.closest(".form_comentario");
   if (!formulario) return;
 
-  evento.preventDefault(); // evita que la página se recargue
+  evento.preventDefault(); 
 
   const campo = formulario.querySelector("input[name='comentario']");
   const texto = campo.value.trim();
@@ -279,10 +252,7 @@ document.addEventListener("submit", function (evento) {
 });
 
 
-/* =====================================================
-   BÚSQUEDA Y CATEGORÍAS
-   ===================================================== */
-
+/* Busqueda */
 const buscador = document.getElementById("buscar");
 
 if (buscador) {
@@ -290,7 +260,7 @@ if (buscador) {
   const mensaje = document.querySelector(".busqueda_resultado");
   let categoriaActiva = "todas";
 
-  // Muestra u oculta cada publicación según el texto y la categoría
+  // Muestra u oculta cada publicación basado el texto y la categoría
   function filtrar() {
     const texto = normalizar(buscador.value.trim());
     const tarjetas = document.querySelectorAll(".publicacion");
@@ -300,7 +270,6 @@ if (buscador) {
       const coincideCategoria =
         categoriaActiva === "todas" || tarjeta.dataset.categoria === categoriaActiva;
 
-      // Busca en autor, fecha, categoría, título y descripción (no en comentarios)
       const contenido = normalizar(
         tarjeta.querySelector(".publicacion_principal").textContent
       );
@@ -349,19 +318,17 @@ if (buscador) {
 }
 
 
-/* =====================================================
-   CREAR PUBLICACIÓN
-   ===================================================== */
+/* Crear publicacion */
 
 const formCrear = document.querySelector(".crear_publicacion");
 
 if (formCrear) {
   const inputFoto = document.getElementById("foto");
   const vista = formCrear.querySelector(".vista_imagen");
-  const campoUsuario = formCrear.elements.usuario; // campo "Nombre de usuario"
+  const campoUsuario = formCrear.elements.usuario; 
   let urlActual = null;
 
-  // Rellena el nombre de usuario con el del perfil (se puede cambiar)
+  
   function rellenarUsuario() {
     if (!campoUsuario) return;
     const nombre = nombreUsuario();
@@ -377,7 +344,6 @@ if (formCrear) {
     vista.hidden = true;
   }
 
-  // Muestra un mensaje debajo del formulario (esError lo pone en rojo)
   function mostrarAviso(texto, enlace, esError) {
     let aviso = formCrear.querySelector(".perfil_mensaje");
     if (!aviso) {
@@ -398,7 +364,7 @@ if (formCrear) {
     }
   }
 
-  // Revisa los datos antes de publicar y devuelve la lista de errores
+  // Revisar datos antes de publicar. Devuelve lista de errores
   function validarPublicacion(datos, archivo) {
     const errores = [];
 
@@ -425,7 +391,6 @@ if (formCrear) {
     return errores;
   }
 
-  // Reduce la foto para que quepa en la memoria del navegador
   function comprimirImagen(archivo) {
     return new Promise(function (resolver, rechazar) {
       const lector = new FileReader();
@@ -486,7 +451,6 @@ if (formCrear) {
     const archivo = inputFoto.files[0];
     const datos = new FormData(formCrear);
 
-    // 1. Validar los datos
     const errores = validarPublicacion(datos, archivo);
     if (errores.length > 0) {
       mostrarAviso(errores.join(" "), null, true);
@@ -494,7 +458,6 @@ if (formCrear) {
     }
 
     try {
-      // 2. Crear el objeto de la publicación
       const foto = await comprimirImagen(archivo);
 
       const nueva = {
@@ -512,7 +475,6 @@ if (formCrear) {
         comentarios: []
       };
 
-      // 3. Agregarla al arreglo y guardarlo
       const lista = leerPublicaciones();
       lista.unshift(nueva); // la más nueva primero
 
@@ -521,7 +483,6 @@ if (formCrear) {
         return;
       }
 
-      // 4. Limpiar el formulario y avisar
       formCrear.reset();
       rellenarUsuario();
       ocultarVista();
@@ -533,10 +494,7 @@ if (formCrear) {
 }
 
 
-/* =====================================================
-   PERFIL DE USUARIO
-   ===================================================== */
-
+/* Perfil de usuario */
 const formPerfil = document.getElementById("form_perfil");
 
 if (formPerfil) {
@@ -553,11 +511,10 @@ if (formPerfil) {
 
   const NOMBRES = ["nombre", "correo", "pais", "provincia", "descripcion"];
 
-  let respaldoDatos = null; // datos antes de editar (para "Cancelar")
+  let respaldoDatos = null; 
   let respaldoFoto = null;
   let temporizador = null;
 
-  // Lee los valores actuales del formulario
   function leerDatos() {
     const datos = {};
     NOMBRES.forEach(function (nombre) {
@@ -566,7 +523,6 @@ if (formPerfil) {
     return datos;
   }
 
-  // Escribe los datos en el formulario y en el título
   function escribirDatos(datos) {
     NOMBRES.forEach(function (nombre) {
       if (datos[nombre] !== undefined) {
@@ -584,7 +540,6 @@ if (formPerfil) {
     }, 4000);
   }
 
-  // Activa o desactiva el modo de edición
   function modoEdicion(activo) {
     campos.disabled = !activo;
     acciones.hidden = !activo;
@@ -599,7 +554,6 @@ if (formPerfil) {
     if (guardado.foto) foto.src = guardado.foto;
   }
 
-  // Botón "Editar datos"
   btnEditar.addEventListener("click", function () {
     respaldoDatos = leerDatos();
     respaldoFoto = foto.src;
@@ -608,7 +562,6 @@ if (formPerfil) {
     formPerfil.elements.nombre.focus();
   });
 
-  // Botón "Cancelar": vuelve a lo que había antes
   btnCancelar.addEventListener("click", function () {
     escribirDatos(respaldoDatos);
     foto.src = respaldoFoto;
@@ -617,7 +570,6 @@ if (formPerfil) {
     btnEditar.focus();
   });
 
-  // Cambiar la foto de perfil (vista previa inmediata)
   inputFoto.addEventListener("change", function () {
     const archivo = inputFoto.files[0];
     if (!archivo) return;
@@ -635,9 +587,8 @@ if (formPerfil) {
     lector.readAsDataURL(archivo);
   });
 
-  // Botón "Guardar cambios"
   formPerfil.addEventListener("submit", function (evento) {
-    evento.preventDefault(); // evita que la página se recargue
+    evento.preventDefault(); 
 
     const datos = leerDatos();
     datos.nombre = datos.nombre.trim();
