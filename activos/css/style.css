@@ -65,8 +65,10 @@ body{
 
 /* CSS ÚNICO para index.html */
 
-
 /* ---------- TIPOGRAFÍA ---------- */
+/* Fuente general del sitio (similar a la de "october") */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
+
 /* Calora: solo para el nombre del sitio.
    Guarden el archivo en activos/fuentes/ (ajusten la ruta/nombre si cambia). */
 @font-face {
@@ -76,36 +78,11 @@ body{
   font-display: swap;
 }
 
-/* Fuente general del sitio (similar a la de "october") */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
-
-/* ---------- PALETA ---------- */
-:root {
-  /* Base */
-  --creme:      #E1D3A9;
-  --clay-dust:  #C0AA8A;
-  --coffee:     #371E13;
-  --leather:    #734F31;
-
-  /* Profundidad */
-  --maroon:     #5E2A25;
-  --deep-peach: #A85530;
-  --guave:      #8F7C3A;
-  --river-pine: #534B31;
-
-  --font-logo: "Calora", "Cormorant Garamond", serif;
-  --font-main: "Cormorant Garamond", Georgia, serif;
-
-  --radius: 6px;
-  --nav-height: 76px;
-  --max-width: 1120px;
-}
-
 /* ---------- BASE ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  scroll-padding-top: var(--nav-height);
+  scroll-padding-top: 76px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -114,31 +91,31 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-main);
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1rem;
   line-height: 1.75;
-  color: var(--coffee);
-  background: var(--creme);
+  color: #371E13;
+  background: #E1D3A9;
 }
 
 h1, h2 {
   margin: 0 0 1rem;
   font-weight: 600;
   line-height: 1.15;
-  color: var(--maroon);
+  color: #5E2A25;
 }
 
 p { margin: 0 0 1.1rem; }
 
 a {
-  color: var(--maroon);
+  color: #5E2A25;
   text-underline-offset: 3px;
 }
 
-a:hover { color: var(--deep-peach); }
+a:hover { color: #A85530; }
 
 :focus-visible {
-  outline: 3px solid var(--deep-peach);
+  outline: 3px solid #A85530;
   outline-offset: 3px;
 }
 
@@ -154,8 +131,8 @@ main section {
 }
 
 /* Fondos alternados: crema / arcilla */
-main section:nth-child(odd)  { background: var(--creme); }
-main section:nth-child(even) { background: var(--clay-dust); }
+main section:nth-child(odd)  { background: #E1D3A9; }
+main section:nth-child(even) { background: #C0AA8A; }
 
 /* Contenedor de cada sección: dos columnas */
 main section > div {
@@ -163,7 +140,7 @@ main section > div {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: clamp(2rem, 6vw, 5rem);
-  max-width: var(--max-width);
+  max-width: 1120px;
   margin: 0 auto;
 }
 
@@ -192,12 +169,12 @@ main h1 {
 
 /* Nombre del sitio (h1.titulo de la primera sección) */
 #quienes_somos .titulo {
-  font-family: var(--font-logo);
+  font-family: "Calora", "Cormorant Garamond", serif;
   font-weight: 400;
   font-size: clamp(2.4rem, 5.5vw, 4rem);
   line-height: 1.05;
   letter-spacing: 0.01em;
-  color: var(--maroon);
+  color: #5E2A25;
 }
 
 /* ---------- IMÁGENES ---------- */
@@ -206,37 +183,37 @@ main h1 {
   aspect-ratio: 4 / 5;
   max-height: 435px;
   object-fit: cover;
-  border-radius: var(--radius);
-  background: var(--creme);
-  border: 2px solid var(--coffee);
+  border-radius: 6px;
+  background: #E1D3A9;
+  border: 2px solid #371E13;
 }
 
 
 /* Sobre fondo arcilla, la imagen se aclara */
 main section:nth-child(even) .img_izquierda,
 main section:nth-child(even) .img_derecha {
-  background: var(--creme);
+  background: #E1D3A9;
 }
 
 /* ---------- BOTÓN ---------- */
 .button {
   margin-top: 0.8rem;
   padding: 0.75rem 2.2rem;
-  font-family: var(--font-main);
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--creme);
-  background: var(--maroon);
-  border: 2px solid var(--maroon);
-  border-radius: var(--radius);
+  color: #E1D3A9;
+  background: #5E2A25;
+  border: 2px solid #5E2A25;
+  border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
 
 .button:hover {
-  background: var(--deep-peach);
-  border-color: var(--deep-peach);
+  background: #A85530;
+  border-color: #A85530;
 }
 
 /* ---------- FOOTER ---------- */
@@ -246,9 +223,9 @@ main section:nth-child(even) .img_derecha {
   align-items: start;
   gap: clamp(1.5rem, 5vw, 4rem);
   padding: 3rem clamp(1rem, 4vw, 3rem);
-  color: var(--creme);
-  background: var(--coffee);
-  border-top: 3px solid var(--maroon);
+  color: #E1D3A9;
+  background: #371E13;
+  border-top: 3px solid #5E2A25;
 }
 
 .footer section img {
@@ -259,7 +236,7 @@ main section:nth-child(even) .img_derecha {
 
 .footer h2 {
   font-size: 1.6rem;
-  color: var(--clay-dust);
+  color: #C0AA8A;
 }
 
 .footer p {
@@ -269,18 +246,20 @@ main section:nth-child(even) .img_derecha {
 }
 
 .footer a {
-  color: var(--creme);
-  text-decoration-color: var(--leather);
+  color: #E1D3A9;
+  text-decoration-color: #734F31;
 }
 
 .footer a:hover {
-  color: var(--clay-dust);
-  text-decoration-color: var(--clay-dust);
+  color: #C0AA8A;
+  text-decoration-color: #C0AA8A;
 }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
-  :root { --nav-height: 120px; }
+  html {
+    scroll-padding-top: 120px;
+  }
 
   .navbar {
     flex-wrap: wrap;
@@ -320,7 +299,7 @@ main section:nth-child(even) .img_derecha {
   }
 
   .img_izquierda, .img_derecha {
-    box-shadow: 10px 10px 0 var(--deep-peach);
+    box-shadow: 10px 10px 0 #A85530;
   }
 
   .texto_izquierda, .texto_derecha {
@@ -335,3 +314,4 @@ main section:nth-child(even) .img_derecha {
 
   .footer section img { margin: 0 auto; }
 }
+
