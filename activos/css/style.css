@@ -1,12 +1,11 @@
-
 /* CSS de reinicio */
-
+ 
 body{
     margin: 0;
 }
-
+ 
 /* CSS de la navbar */
-
+ 
 .navbar {
   position: sticky;
   top: 0;
@@ -20,7 +19,7 @@ body{
   background: #371E13;
   border-bottom: 3px solid #5E2A25;
 }
-
+ 
 .navbar a {
     text-decoration: none;
     color: #E1D3A9;
@@ -29,24 +28,24 @@ body{
     transition: color 0.3s ease, transform 0.2s ease;
     display: inline-block;
 }
-
+ 
 .nav_icon {
     width: 54px;
     height: 54px;
     object-fit: contain;
 }
-
+ 
 .logo, .perfil {
     font-size: 1.5rem;
     font-weight: bold;
     flex: 1;
 }
-
+ 
 .perfil {
   display: flex;
     justify-content: flex-end;
 }
-
+ 
 .nav_centro {
     display: flex;
     flex-wrap: wrap;
@@ -56,19 +55,19 @@ body{
     margin: 0;
     padding: 0;
 }
-
+ 
 .navbar a:hover {
     transform: scale(1.15);
 }
-
-
-
+ 
+ 
+ 
 /* CSS ÚNICO para index.html */
-
+ 
 /* ---------- TIPOGRAFÍA ---------- */
 /* Fuente general del sitio (similar a la de "october") */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
-
+ 
 /* Calora: solo para el nombre del sitio.
    Guarden el archivo en activos/fuentes/ (ajusten la ruta/nombre si cambia). */
 @font-face {
@@ -77,18 +76,18 @@ body{
        url("../fuentes/Calora.otf") format("opentype");
   font-display: swap;
 }
-
+ 
 /* ---------- BASE ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-
+ 
 html {
   scroll-padding-top: 76px;
 }
-
+ 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 }
-
+ 
 body {
   margin: 0;
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -97,43 +96,43 @@ body {
   color: #371E13;
   background: #E1D3A9;
 }
-
+ 
 h1, h2 {
   margin: 0 0 1rem;
   font-weight: 600;
   line-height: 1.15;
   color: #5E2A25;
 }
-
+ 
 p { margin: 0 0 1.1rem; }
-
+ 
 a {
   color: #5E2A25;
   text-underline-offset: 3px;
 }
-
+ 
 a:hover { color: #A85530; }
-
+ 
 :focus-visible {
   outline: 3px solid #A85530;
   outline-offset: 3px;
 }
-
+ 
 img {
   display: block;
   max-width: 100%;
 }
-
-
+ 
+ 
 /* ---------- SECCIONES ---------- */
 main section {
   padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 3.5vw, 2.5rem);
 }
-
+ 
 /* Fondos alternados: crema / arcilla */
 main section:nth-child(odd)  { background: #E1D3A9; }
 main section:nth-child(even) { background: #C0AA8A; }
-
+ 
 /* Contenedor de cada sección: dos columnas */
 main section > div {
   display: grid;
@@ -143,30 +142,30 @@ main section > div {
   max-width: 1120px;
   margin: 0 auto;
 }
-
+ 
 /* ---------- TEXTO ---------- */
 .texto_izquierda, .texto_derecha {
   max-width: 60ch;
 }
-
+ 
 /* El texto queda pegado a la imagen */
 .texto_derecha   { justify-self: start; }
 .texto_izquierda { justify-self: end; }
-
+ 
 /* Columna explícita: la imagen va primero en el HTML,
    pero img_derecha se muestra a la derecha */
 .img_izquierda, .texto_izquierda { grid-column: 1; grid-row: 1; }
-
+ 
 .img_derecha, .texto_derecha   { grid-column: 2; grid-row: 1; }
-
+ 
 /* Reparte el ancho: la imagen un poco más angosta que el texto */
 .img_izquierda, .img_derecha { justify-self: center; max-width: 420px; }
-
+ 
 main h1 {
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
 }
-
-
+ 
+ 
 /* Nombre del sitio (h1.titulo de la primera sección) */
 #quienes_somos .titulo {
   font-family: "Calora", "Cormorant Garamond", serif;
@@ -176,7 +175,7 @@ main h1 {
   letter-spacing: 0.01em;
   color: #5E2A25;
 }
-
+ 
 /* ---------- IMÁGENES ---------- */
 .img_izquierda, .img_derecha {
   width: 100%;
@@ -187,14 +186,14 @@ main h1 {
   background: #E1D3A9;
   border: 2px solid #371E13;
 }
-
-
+ 
+ 
 /* Sobre fondo arcilla, la imagen se aclara */
 main section:nth-child(even) .img_izquierda,
 main section:nth-child(even) .img_derecha {
   background: #E1D3A9;
 }
-
+ 
 /* ---------- BOTÓN ---------- */
 .button {
   margin-top: 0.8rem;
@@ -210,12 +209,12 @@ main section:nth-child(even) .img_derecha {
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
-
+ 
 .button:hover {
   background: #A85530;
   border-color: #A85530;
 }
-
+ 
 /* ---------- FOOTER ---------- */
 .footer {
   display: grid;
@@ -227,68 +226,68 @@ main section:nth-child(even) .img_derecha {
   background: #371E13;
   border-top: 3px solid #5E2A25;
 }
-
+ 
 .footer section img {
   width: 96px;
   height: 96px;
   object-fit: contain;
 }
-
+ 
 .footer h2 {
   font-size: 1.6rem;
   color: #C0AA8A;
 }
-
+ 
 .footer p {
   margin: 0 0 0.5rem;
   font-size: 1.1rem;
   line-height: 1.5;
 }
-
+ 
 .footer a {
   color: #E1D3A9;
   text-decoration-color: #734F31;
 }
-
+ 
 .footer a:hover {
   color: #C0AA8A;
   text-decoration-color: #C0AA8A;
 }
-
+ 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
   html {
     scroll-padding-top: 120px;
   }
-
+ 
   .navbar {
     flex-wrap: wrap;
     justify-content: space-between;
   }
-
+ 
   /* Logo y perfil arriba, enlaces debajo */
   .nav_centro {
     order: 3;
     width: 100%;
     gap: 0.2rem 1.2rem;
   }
-
+ 
   .nav_centro a { font-size: 1rem; }
 }
-
+ 
 @media (max-width: 760px) {
   body { font-size: 1.1rem; }
-
+ 
   main section > div {
     grid-template-columns: 1fr;
   }
-
+ 
   /* Todo en una sola columna, en el orden del HTML */
   .img_izquierda, .img_derecha, .texto_izquierda, .texto_derecha {
     grid-column: 1;
     grid-row: auto;
   }
-
+ 
   /* En móvil la imagen va siempre primero */
   .img_izquierda, .img_derecha {
     order: -1;
@@ -297,21 +296,265 @@ main section:nth-child(even) .img_derecha {
     aspect-ratio: 4 / 3;
     margin: 0 auto;
   }
-
+ 
   .img_izquierda, .img_derecha {
     box-shadow: 10px 10px 0 #A85530;
   }
-
+ 
   .texto_izquierda, .texto_derecha {
     justify-self: stretch;
     max-width: none;
   }
-
+ 
   .footer {
     grid-template-columns: 1fr;
     text-align: center;
   }
-
+ 
   .footer section img { margin: 0 auto; }
 }
 
+/* CSS para publicaciones */
+ 
+ 
+/* ---------- Tarjeta: publicación a la izquierda, comentarios a la derecha ---------- */
+.publicacion {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: stretch;
+  gap: clamp(1.2rem, 3vw, 2rem);
+  width: 100%;
+  max-width: 1000px;
+  margin: 8px auto;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: #C0AA8A;
+  border: 2px solid #371E13;
+  border-radius: 6px;
+}
+ 
+#publicaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+ 
+/* ---------- Lado izquierdo ---------- */
+.publicacion_principal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+ 
+/* Autor */
+.publicacion_autor {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+ 
+.autor_foto {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  background: #E1D3A9;
+  border: 2px solid #371E13;
+  border-radius: 50%;
+}
+ 
+.autor_nombre {
+  display: block;
+  line-height: 1.2;
+  color: #5E2A25;
+}
+ 
+.publicacion_fecha {
+  display: block;
+  font-size: 0.9rem;
+  color:  #734F31;
+}
+ 
+/* Categoría de la publicación */
+.publicacion_categoria {
+  margin-left: auto;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: #E1D3A9;
+  background: #534B31;
+  border: 2px solid #371E13;
+  border-radius: 999px;
+}
+ 
+/* Foto de la publicación */
+.publicacion_imagen {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #E1D3A9;
+  border: 3px solid #371E13;
+  border-radius: 6px;
+}
+ 
+/* Likes y descripción */
+.publicacion_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+ 
+.btn_like {
+  align-self: flex-start;
+  padding: 0.3rem 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #5E2A25;
+  background: transparent;
+  border: 2px solid #5E2A25;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+ 
+.btn_like:hover,
+.btn_like.activo {
+  color: #E1D3A9;
+  background: #5E2A25;
+}
+ 
+.publicacion_descripcion {
+  margin: 0;
+  line-height: 1.55;
+}
+ 
+.publicacion_descripcion strong {
+  margin-right: 0.3rem;
+  color: #5E2A25;
+}
+ 
+/* ---------- Lado derecho: comentarios ---------- */
+.publicacion_comentarios {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.2rem;
+  background: #E1D3A9;
+  border: 2px solid #734F31;
+  border-radius: 6px;
+}
+ 
+.publicacion_comentarios h2 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+ 
+.lista_comentarios {
+  max-height: 380px;
+  margin: 0 0 1rem;
+  padding: 0 0.3rem 0 0;
+  list-style: none;
+  overflow-y: auto;
+}
+ 
+.comentario {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+ 
+.comentario:last-child {
+  margin-bottom: 0;
+}
+ 
+.comentario_foto {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  background: #C0AA8A;
+  border: 2px solid #371E13;
+  border-radius: 50%;
+}
+ 
+.comentario_texto {
+  padding: 0.5rem 0.8rem;
+  background: #C0AA8A;
+  border-radius: 6px;
+}
+ 
+.comentario_texto strong {
+  color:  #5E2A25;
+}
+ 
+.comentario_texto p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+ 
+/* Escribir un comentario */
+.form_comentario {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+ 
+.form_comentario input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.55rem 0.8rem;
+  font: inherit;
+  font-size: 1rem;
+  color: #371E13;
+  background: #C0AA8A;
+  border: 2px solid #734F31;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+ 
+.form_comentario input::placeholder {
+  color: #734F31;
+  opacity: 0.8;
+}
+ 
+.form_comentario input:focus {
+  outline: none;
+  border-color: #A85530;
+  box-shadow: 0 0 0 3px rgba(168, 85, 48, 0.3);
+}
+ 
+.form_comentario .button {
+  margin-top: 0;
+  padding: 0.55rem 1.2rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #E1D3A9;
+  background: #5E2A25;
+  border: 2px solid #5E2A25;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s,
+}
+ 
+.form_comentario .button:hover {
+  background: #A85530;
+  border-color: #A85530;
+}
+ 
+/* ---------- Móvil y tablet: comentarios debajo ---------- */
+@media (max-width: 860px) {
+  .publicacion {
+    grid-template-columns: 1fr;
+    box-shadow: 8px 8px 0 #A85530;
+  }
+ 
+  .lista_comentarios {
+    max-height: 300px;
+  }
+}
