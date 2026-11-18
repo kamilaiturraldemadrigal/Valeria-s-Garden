@@ -5,6 +5,63 @@ body{
     margin: 0;
 }
 
+/* CSS de la navbar */
+ 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 36px;
+  padding: 0.6rem clamp(1rem, 4vw, 3rem);
+  background: #371E13;
+  border-bottom: 3px solid #5E2A25;
+}
+ 
+.navbar a {
+    text-decoration: none;
+    color: #E1D3A9;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+ 
+.nav_icon {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+}
+ 
+.logo, .perfil {
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex: 1;
+}
+ 
+.perfil {
+  display: flex;
+    justify-content: flex-end;
+}
+ 
+.nav_centro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+ 
+.navbar a:hover {
+    transform: scale(1.15);
+}
+
+
 /* CSS para publicaciones */
 
 
@@ -406,7 +463,7 @@ body{
 
 
 /* CSS para perfil de usuario */
-
+ 
 #perfil_usuario {
   display: flex;
   flex-direction: column;
@@ -414,7 +471,7 @@ body{
   gap: 2rem;
   padding: clamp(2rem, 3.5vw, 3rem) clamp(0.6rem, 3vw, 2rem);
 }
-
+ 
 /* Estilo común de las dos tarjetas */
 .perfil_tarjeta {
   width: 100%;
@@ -424,7 +481,7 @@ body{
   border: 3px solid #371E13;
   border-radius: 6px;
 }
-
+ 
 /* ---------- Tarjeta 1: foto y nombre ---------- */
 .perfil_cabecera {
   display: grid;
@@ -433,7 +490,7 @@ body{
   gap: clamp(1rem, 3.5vw, 1.8rem);
   box-shadow: 10px 10px 0 #A85530;
 }
-
+ 
 .perfil_foto {
   width: 115px;
   height: 115px;
@@ -442,24 +499,24 @@ body{
   border: 3px solid #371E13;
   border-radius: 50%;
 }
-
+ 
 .perfil_nombre {
   margin: 0;
   font-size: clamp(1.7rem, 4.2vw, 2.5rem);
   overflow-wrap: anywhere;
 }
-
+ 
 /* Sin la línea decorativa debajo del nombre */
 .perfil_nombre::after {
   display: none;
 }
-
+ 
 .perfil_subtitulo {
   margin: 0.2rem 0 0;
   font-size: 1.1rem;
   color: #734F31;
 }
-
+ 
 /* Botón "Cambiar foto" (solo visible al editar) */
 .perfil_cambiar_foto {
   position: relative;
@@ -475,36 +532,36 @@ body{
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-
+ 
 .perfil_cambiar_foto:hover {
   color: #E1D3A9;
   background: #5E2A25;
 }
-
+ 
 .perfil_cambiar_foto:focus-within {
   outline: 3px solid #A85530;
   outline-offset: 3px;
 }
-
+ 
 .perfil_cambiar_foto input {
   position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
 }
-
+ 
 /* Necesario: estas reglas con display anularían el atributo hidden */
 .perfil_cambiar_foto[hidden],
 .btn_editar[hidden],
 .perfil_acciones[hidden] {
   display: none;
 }
-
+ 
 /* ---------- Tarjeta 2: información personal ---------- */
 .perfil_datos {
   box-shadow: 10px 10px 0 #534B31;
 }
-
+ 
 .perfil_datos_encabezado {
   display: flex;
   align-items: center;
@@ -514,12 +571,12 @@ body{
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
 }
-
+ 
 .perfil_datos_encabezado h2 {
   margin: 0;
   font-size: clamp(1.5rem, 3.5vw, 1.9rem);
 }
-
+ 
 /* Botón "Editar datos" y "Cancelar" */
 .btn_editar,
 .btn_secundario {
@@ -534,19 +591,19 @@ body{
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-
+ 
 .btn_editar:hover,
 .btn_secundario:hover {
   color: #E1D3A9;
   background: #5E2A25;
 }
-
+ 
 .btn_editar:focus-visible,
 .btn_secundario:focus-visible {
   outline: 3px solid #A85530;
   outline-offset: 3px;
 }
-
+ 
 /* ---------- Campos ---------- */
 .perfil_campos {
   display: grid;
@@ -557,12 +614,12 @@ body{
   padding: 0;
   border: 0;
 }
-
+ 
 .perfil_campos .campo_ancho {
   grid-column: 1 / -1;
   min-width: 0;
 }
-
+ 
 .perfil_campos label {
   display: block;
   margin-bottom: 0.35rem;
@@ -570,7 +627,7 @@ body{
   font-weight: 600;
   color: #371E13;
 }
-
+ 
 .perfil_campos input,
 .perfil_campos select,
 .perfil_campos textarea {
@@ -588,22 +645,22 @@ body{
   border-radius: 6px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-
+ 
 .perfil_campos select {
   cursor: pointer;
 }
-
+ 
 .perfil_campos textarea {
   min-height: 100px;
   resize: vertical;
 }
-
+ 
 .perfil_campos input:hover,
 .perfil_campos select:hover,
 .perfil_campos textarea:hover {
   border-color: #5E2A25;
 }
-
+ 
 .perfil_campos input:focus,
 .perfil_campos select:focus,
 .perfil_campos textarea:focus {
@@ -611,7 +668,7 @@ body{
   border-color: #A85530;
   box-shadow: 0 0 0 3px rgba(168, 85, 48, 0.3);
 }
-
+ 
 /* Modo lectura: los campos se ven como texto, no como cajas editables */
 .perfil_campos:disabled input,
 .perfil_campos:disabled select,
@@ -627,7 +684,7 @@ body{
   resize: none;
   field-sizing: content;
 }
-
+ 
 /* ---------- Botones de guardar y cancelar ---------- */
 .perfil_acciones {
   display: flex;
@@ -635,7 +692,7 @@ body{
   gap: 0.8rem;
   margin-top: 1.6rem;
 }
-
+ 
 .perfil_acciones .button {
   margin-top: 0;
   padding: 0.55rem 1.8rem;
@@ -649,23 +706,23 @@ body{
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
-
+ 
 .perfil_acciones .button:hover {
   background: #A85530;
   border-color: #A85530;
 }
-
+ 
 /* Mensaje "Cambios guardados" */
 .perfil_mensaje {
   margin: 1rem 0 0;
   font-weight: 600;
   color: #534B31;
 }
-
+ 
 .perfil_mensaje:empty {
   display: none;
 }
-
+ 
 /* ---------- Móvil ---------- */
 @media (max-width: 600px) {
   .perfil_cabecera {
@@ -674,19 +731,19 @@ body{
     text-align: center;
     box-shadow: 8px 8px 0 #A85530;
   }
-
+ 
   .perfil_datos {
     box-shadow: 8px 8px 0 #534B31;
   }
-
+ 
   .perfil_campos {
     grid-template-columns: 1fr;
   }
-
+ 
   .perfil_acciones {
     flex-direction: column-reverse;
   }
-
+ 
   .perfil_acciones .button,
   .btn_secundario {
     width: 100%;
