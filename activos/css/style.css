@@ -1164,3 +1164,287 @@ main section:nth-child(even) .img_derecha {
     justify-self: stretch;
   }
 }
+
+/*CSS para crear publicacion*/
+ 
+/* =====================================================
+   CREAR PUBLICACIÓN
+   ===================================================== */
+ 
+/* Título centrado */
+#crear_publicacion .titulo {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+ 
+#crear_publicacion .titulo::after {
+  margin: 0.8rem auto 0;
+}
+ 
+/* Dos tarjetas lado a lado */
+.crear_publicacion {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+ 
+/* Estilo común de las dos tarjetas */
+.crear_foto,
+.crear_datos {
+  min-width: 0;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: #C0AA8A;
+  border: 3px solid #371E13;
+  border-radius: 6px;
+  box-shadow: 12px 12px 0 #A85530;
+}
+ 
+/* ---------- Tarjeta de la foto ---------- */
+.zona_subida {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  text-align: center;
+  background: #E1D3A9;
+  border: 3px dashed #734F31;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+ 
+.zona_subida:hover {
+  border-color: #A85530;
+}
+ 
+.zona_subida:focus-within {
+  outline: 3px solid #A85530;
+  outline-offset: 3px;
+}
+ 
+/* El input de archivo se oculta, pero sigue siendo accesible con teclado */
+.zona_subida input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+ 
+.subida_texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  color: #734F31;
+}
+ 
+.subida_texto strong {
+  font-size: 1.1rem;
+  color: #5E2A25;
+}
+ 
+.subida_texto small {
+  font-size: 0.95rem;
+}
+ 
+/* Vista previa de la foto elegida */
+.vista_imagen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+.vista_imagen[hidden] {
+  display: none;
+}
+ 
+/* ---------- Filtros ---------- */
+.filtros {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  border: 0;
+}
+ 
+.filtros legend {
+  margin-bottom: 0.7rem;
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #5E2A25;
+}
+ 
+.filtros_lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+ 
+.filtro {
+  position: relative;
+}
+ 
+/* Se oculta el círculo del radio: el botón es el texto */
+.filtro input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+ 
+.filtro span {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #371E13;
+  background: #E1D3A9;
+  border: 2px solid #734F31;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+ 
+.filtro span:hover {
+  border-color: #5E2A25;
+}
+ 
+.filtro input:checked + span {
+  color: #E1D3A9;
+  background: #5E2A25;
+  border-color: #5E2A25;
+}
+ 
+.filtro input:focus-visible + span {
+  outline: 3px solid #A85530;
+  outline-offset: 2px;
+}
+ 
+/* El filtro elegido se aplica a la vista previa (solo con CSS) */
+.crear_foto:has(input[value="sepia"]:checked) .vista_imagen {
+  filter: sepia(0.85);
+}
+ 
+.crear_foto:has(input[value="blanco_negro"]:checked) .vista_imagen {
+  filter: grayscale(1);
+}
+ 
+.crear_foto:has(input[value="calido"]:checked) .vista_imagen {
+  filter: sepia(0.35) saturate(1.3) hue-rotate(-10deg);
+}
+ 
+.crear_foto:has(input[value="vivido"]:checked) .vista_imagen {
+  filter: saturate(1.6) contrast(1.1);
+}
+ 
+.crear_foto:has(input[value="suave"]:checked) .vista_imagen {
+  filter: brightness(1.08) contrast(0.88) saturate(0.9);
+}
+ 
+/* ---------- Tarjeta del formulario ---------- */
+.crear_datos h2 {
+  margin: 0 0 1.4rem;
+  font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+}
+ 
+.crear_datos .campo {
+  margin-bottom: 1.2rem;
+}
+ 
+.crear_datos label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #371E13;
+}
+ 
+.crear_datos input,
+.crear_datos select,
+.crear_datos textarea {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #371E13;
+  background: #E1D3A9;
+  border: 2px solid #734F31;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+ 
+.crear_datos select {
+  cursor: pointer;
+}
+ 
+.crear_datos textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+ 
+.crear_datos ::placeholder {
+  color: #734F31;
+  opacity: 0.7;
+}
+ 
+.crear_datos select:invalid {
+  color: #734F31;
+}
+ 
+.crear_datos input:hover,
+.crear_datos select:hover,
+.crear_datos textarea:hover {
+  border-color: #5E2A25;
+}
+ 
+.crear_datos input:focus,
+.crear_datos select:focus,
+.crear_datos textarea:focus {
+  outline: none;
+  border-color: #A85530;
+  box-shadow: 0 0 0 3px rgba(168, 85, 48, 0.3);
+}
+ 
+/* Botón */
+.crear_datos .button {
+  display: block;
+  width: 100%;
+  margin-top: 1.6rem;
+  padding: 0.8rem 1.5rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #E1D3A9;
+  background: #5E2A25;
+  border: 2px solid #5E2A25;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+ 
+.crear_datos .button:hover {
+  background: #A85530;
+  border-color: #A85530;
+}
+ 
+/* ---------- Móvil y tablet: una tarjeta debajo de la otra ---------- */
+@media (max-width: 860px) {
+  .crear_publicacion {
+    grid-template-columns: 1fr;
+  }
+ 
+  .crear_foto,
+  .crear_datos {
+    box-shadow: 8px 8px 0 #A85530;
+  }
+}
