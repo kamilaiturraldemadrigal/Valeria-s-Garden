@@ -23,7 +23,7 @@ body{
 .navbar a {
     text-decoration: none;
     color: #EBE0CA;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 500;
     transition: color 0.3s ease, transform 0.2s ease;
     display: inline-block;
@@ -41,6 +41,20 @@ body{
     flex: 1;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.eslogan {
+    max-width: 10rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #E0C9A6;
+}
+
 .perfil {
   display: flex;
     justify-content: flex-end;
@@ -49,6 +63,7 @@ body{
 .nav_centro {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     list-style: none;
     gap: 2rem;
@@ -56,9 +71,23 @@ body{
     padding: 0;
 }
 
+.nav_centro li {
+    display: flex;
+    align-items: center;
+}
+
 .navbar a:hover {
+    color: #E0C9A6;
     transform: scale(1.15);
 }
+
+/* Responsivo */
+@media (max-width: 520px) {
+    .eslogan {
+        display: none;
+    }
+}
+
 
 /* CSS ÚNICO para index.html */
 
